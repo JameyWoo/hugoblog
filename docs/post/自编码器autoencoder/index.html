@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>自编码器AutoEncoder - 姬小野的部落</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="姬小野" /><meta name="description" content="一. 什么是自编码器 自动编码器 autoencoder, 简单表现编码器为将一组数据进行压缩编码(降维), 解码器将这组数据恢复成高维的数据. 这种编码和解码的过程不是无损" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://fiveplus.top/hugoblog/post/%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/hugoblog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/hugoblog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/hugoblog/favicon-16x16.png">
+<link rel="manifest" href="/hugoblog/manifest.json">
+<link rel="mask-icon" href="/hugoblog/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/hugoblog/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="自编码器AutoEncoder" />
+<meta property="og:description" content="一. 什么是自编码器 自动编码器 autoencoder, 简单表现编码器为将一组数据进行压缩编码(降维), 解码器将这组数据恢复成高维的数据. 这种编码和解码的过程不是无损" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiveplus.top/hugoblog/post/%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder/" />
+<meta property="article:published_time" content="2019-08-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-08-14T00:00:00+00:00" />
+<meta itemprop="name" content="自编码器AutoEncoder">
+<meta itemprop="description" content="一. 什么是自编码器 自动编码器 autoencoder, 简单表现编码器为将一组数据进行压缩编码(降维), 解码器将这组数据恢复成高维的数据. 这种编码和解码的过程不是无损">
+<meta itemprop="datePublished" content="2019-08-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1750">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="自编码器AutoEncoder"/>
+<meta name="twitter:description" content="一. 什么是自编码器 自动编码器 autoencoder, 简单表现编码器为将一组数据进行压缩编码(降维), 解码器将这组数据恢复成高维的数据. 这种编码和解码的过程不是无损"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/hugoblog/" class="logo">fiveplus</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/hugoblog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/hugoblog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/hugoblog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/hugoblog/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/hugoblog/" class="logo">fiveplus</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/hugoblog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/hugoblog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/hugoblog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/hugoblog/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">自编码器AutoEncoder</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-14 </span>
+        <div class="post-category">
+            <a href="/hugoblog/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"> 深度学习 </a>
+            </div>
+          <span class="more-meta"> 1750 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-什么是自编码器">一. 什么是自编码器</a></li>
+    <li><a href="#二-有什么作用">二. 有什么作用</a>
+      <ul>
+        <li><a href="#1-图像去噪">1) 图像去噪</a></li>
+        <li><a href="#2-可视化降维">2) 可视化降维</a></li>
+      </ul>
+    </li>
+    <li><a href="#三-如何实现">三. 如何实现</a>
+      <ul>
+        <li><a href="#1-全连接层实现">1) 全连接层实现</a></li>
+        <li><a href="#2-测试-对有噪声图像的自编码">2) 测试: 对有噪声图像的自编码</a></li>
+        <li><a href="#3-卷积层实现">3) 卷积层实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#四-一些小细节">四. 一些小细节</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="一-什么是自编码器">一. 什么是自编码器</h2>
+<p>自动编码器 autoencoder, 简单表现编码器为将一组数据进行压缩编码(降维), 解码器将这组数据恢复成高维的数据. 这种编码和解码的过程不是无损的, 因此最终的输出和输入是有一些差异的, 且非常依赖于训练的数据集.</p>
+<p>如图所示
+<img src="/images/20190814_1.png" alt=""></p>
+<p>如上面这张图所示, 对于一个简单的三层线性神经网络组成的自编码器, 我们在进行神经网络的搭建过程中, 将(input, hidden) 这个过程叫做编码器, 将(hidden, output) 这个过程叫做解码器. 对于mnist数据集而言, 它的维度变化是 784 -&gt; x -&gt; 784, 其中, x &lt; 784, 是编码的维度.</p>
+<hr>
+<h2 id="二-有什么作用">二. 有什么作用</h2>
+<h3 id="1-图像去噪">1) 图像去噪</h3>
+<p>看上去很强啊
+<img src="/images/20190814_2.png" alt=""></p>
+<h3 id="2-可视化降维">2) 可视化降维</h3>
+<hr>
+<h2 id="三-如何实现">三. 如何实现</h2>
+<p>训练神经网络需要定义损失函数, 那么这个自编码器的损失衡量值是什么?</p>
+<p>衡量损失的值是由网络的输出结果和输入决定的. 也就是说, 是由这两个784维数据的差别决定的.</p>
+<h3 id="1-全连接层实现">1) 全连接层实现</h3>
+<p>首先定义一个神经网络</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Autoencoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Autoencoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1">## encoder ##</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="n">encoding_dim</span><span class="p">)</span>
+        
+        <span class="c1">## decoder ##</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">encoding_dim</span><span class="p">,</span> <span class="mi">784</span><span class="p">)</span>
+        
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># define feedforward behavior </span>
+        <span class="c1"># and scale the *output* layer with a sigmoid activation function</span>
+<span class="c1">#         print(x.shape)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># initialize the NN</span>
+<span class="n">encoding_dim</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Autoencoder</span><span class="p">(</span><span class="n">encoding_dim</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>定义损失函数和优化器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp"># specify loss function
+</span><span class="cp"></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="cp"># specify loss function
+</span><span class="cp"></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>训练过程, 一共20个epochs, 话说pytorch还真慢, 这么简单的网络都要训练好一会</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># number of epochs to train the model</span>
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># monitor training loss</span>
+    <span class="n">train_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    
+    <span class="c1">###################</span>
+    <span class="c1"># train the model #</span>
+    <span class="c1">###################</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="c1"># _ stands in for labels, here</span>
+        <span class="n">images</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="c1"># flatten images</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># clear the gradients of all optimized variables</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="c1"># forward pass: compute predicted outputs by passing inputs to the model</span>
+<span class="c1">#         print(images.shape)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="c1"># calculate the loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">images</span><span class="p">)</span>
+        <span class="c1"># backward pass: compute gradient of the loss with respect to model parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="c1"># perform a single optimization step (parameter update)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="c1"># update running training loss</span>
+        <span class="n">train_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="o">*</span><span class="n">images</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            
+    <span class="c1"># print avg training statistics </span>
+    <span class="n">train_loss</span> <span class="o">=</span> <span class="n">train_loss</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Epoch: {} </span><span class="se">\t</span><span class="s1">Training Loss: {:.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">epoch</span><span class="p">,</span> 
+        <span class="n">train_loss</span>
+        <span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>训练过程的损失变化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">Epoch</span><span class="p">:</span> <span class="mi">1</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.342308</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">2</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.081272</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">3</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.058724</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">4</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.051274</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">5</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.047382</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">6</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.044760</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">7</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.043184</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">8</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.042066</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">9</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.041246</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">10</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.040589</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">11</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.040059</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">12</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.039646</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">13</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.039272</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">14</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.038980</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">15</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.038733</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">16</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.038524</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">17</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.038328</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">18</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.038162</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">19</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.038012</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">20</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.037874</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么效果如何呢? 上面一排是输入图像, 下面一排是输出图像. 经过自编码器之后, 还原度还是很高的.</p>
+<p><img src="/images/20190814_3.png" alt=""></p>
+<h3 id="2-测试-对有噪声图像的自编码">2) 测试: 对有噪声图像的自编码</h3>
+<p>首先查看一张图片</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">a_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a_img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">a_img</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">a_img</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">a_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/20190814_4.png" alt="">
+然后向其中加入噪声</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">a_img_x</span> <span class="o">=</span> <span class="n">a_img</span> <span class="o">+</span> <span class="mf">0.08</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">a_img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">a_img_x</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这是加入噪声之后的图片, 可以看出差别还是很大的. 那么我们的编码器能还原出如何的效果呢?
+<img src="/images/20190814_5.png" alt=""></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">a_img_output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">a_img_x</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a_img_output</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">output_img</span> <span class="o">=</span> <span class="n">a_img_output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">output_img</span> <span class="o">=</span> <span class="n">output_img</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">output_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这是还原后的, 说实话看到这个图片我心里也是很惊讶的. 就在于加入那么多噪声之后, 居然还可以还原的如此清晰. 当然这是对于MNIST数据集而言, 这个数据集比较简单.
+<img src="/images/20190814_6.png" alt=""></p>
+<h3 id="3-卷积层实现">3) 卷积层实现</h3>
+<p>不同之处在于定义自编码器的神经网络结构
+如图所示
+<img src="/images/20190814_7.png" alt="">
+可以看到在decoder中经过了两个反卷积层, <!-- raw HTML omitted -->但是由于水平有限, 这个反卷积层看着好奇怪, 不知道是怎么反卷积的. <!-- raw HTML omitted --></p>
+<p>pytorch实现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="kn">as</span> <span class="nn">F</span>
+
+<span class="c1"># define the NN architecture</span>
+<span class="k">class</span> <span class="nc">ConvAutoencoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ConvAutoencoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1">## encoder layers ##</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>        
+        
+        <span class="c1">## decoder layers ##</span>
+        <span class="c1">## a kernel of 2 and a stride of 2 will increase the spatial dims by 2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1">## encode ##</span>
+        
+        <span class="c1">## decode ##</span>
+        <span class="c1">## apply ReLu to all hidden layers *except for the output layer</span>
+        <span class="c1">## apply a sigmoid to the output layer</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t_conv1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t_conv2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+                
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># initialize the NN</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ConvAutoencoder</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>训练起来比全连接层的网络还要慢很多, 而损失值的降低也慢很多, 不像之前从epoch 1 到 epoch 2 直接就断崖式下跌了. 下面是损失值的变化过程, 只训练了 15个epoch. 从损失之上看这个效果好像差很多?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">Epoch</span><span class="p">:</span> <span class="mi">1</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.448799</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">2</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.266815</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">3</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.251290</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">4</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.240823</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">5</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.231836</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">6</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.220550</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">7</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.210341</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">8</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.202768</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">9</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.197010</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">10</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.193259</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">11</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.190589</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">12</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.188406</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">13</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.186529</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">14</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.184983</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">15</span> 	<span class="n">Training</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.183579</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>观察下图的数字9的话, 可以看到损失了不少.
+<img src="/images/20190814_8.png" alt=""></p>
+<p><strong>再看看噪声图片的处理能力如何</strong></p>
+<p>原图:
+<img src="/images/20190814_9.png" alt="">
+加入噪声:
+<img src="/images/20190814_10.png" alt="">
+经过自编码器
+<img src="/images/20190814_11.png" alt="">
+呃, 效果似乎有点不是很对, 可能是训练的epoch太少了, 毕竟我们可以前面看到训练15个epoch的损失值还是达到了0.18, 而在全连接层的简单自编码器上第二个epoch的损失值就达到了0.08</p>
+<hr>
+<h2 id="四-一些小细节">四. 一些小细节</h2>
+<ol>
+<li>
+<p>numpy 的 squeeze 函数
+<a href="https://blog.csdn.net/zenghaitao0128/article/details/78512715">参考博客</a>
+作用：<strong>从数组的形状中删除单维度条目，即把shape中为1的维度去掉</strong></p>
+</li>
+<li>
+<p>给MNIST图片加入噪声的方法</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">test_img_x</span> <span class="o">=</span> <span class="n">test_img</span> <span class="o">+</span> <span class="mf">0.08</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">test_img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>就是加入一些随机值, 在原图的基础上进行小幅度修改.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">姬小野</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-08-14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/hugoblog/post/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%8C%96%E4%B8%BAdfa%E7%8A%B6%E6%80%81%E5%9B%BE/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">正则表达式转化为DFA状态图</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/hugoblog/post/%E5%88%A9%E7%94%A8%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E8%BF%9B%E8%A1%8C%E8%8A%B1%E7%9A%84%E5%88%86%E7%B1%BB/">
+            <span class="next-text nav-default">利用迁移学习进行花的分类</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/JameyWoo" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://fiveplus.top/hugoblog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">姬小野</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/hugoblog/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

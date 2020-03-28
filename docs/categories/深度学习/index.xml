@@ -6,10 +6,19 @@
     <description>Recent content in 深度学习 on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fiveplus.top/hugoblog/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>自编码器AutoEncoder</title>
+      <link>https://fiveplus.top/hugoblog/post/%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder/</guid>
+      <description>一. 什么是自编码器 自动编码器 autoencoder, 简单表现编码器为将一组数据进行压缩编码(降维), 解码器将这组数据恢复成高维的数据. 这种编码和解码的过程不是无损</description>
+    </item>
     
     <item>
       <title>利用迁移学习进行花的分类</title>
@@ -27,6 +36,15 @@
       
       <guid>https://fiveplus.top/hugoblog/post/%E4%BD%BF%E7%94%A8face_recognition%E8%BF%9B%E8%A1%8C%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/</guid>
       <description>效果图 调用face_recognition.face_landmarks()方法即可得到人脸特征点, 返回一个字典, 下图是返回的数据, 包括ch</description>
+    </item>
+    
+    <item>
+      <title>Darknet  目标检测开源库学习记录</title>
+      <link>https://fiveplus.top/hugoblog/post/darknet-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%BC%80%E6%BA%90%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/darknet-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%BC%80%E6%BA%90%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</guid>
+      <description>1. 效果展示 官网链接 darknet 实现了c语言版本的yolo v3, 不依赖任何其他库. 因此安装非常简单. 效果图: 2. 安装方法 如何安装? 1 2 3 git clone https://github.com/pjreddie/darknet cd darknet make 然后下载y</description>
     </item>
     
   </channel>

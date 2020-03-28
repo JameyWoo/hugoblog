@@ -20,5 +20,14 @@
       <description>文章链接 优雅地使用ubuntu18.04（一） 优雅地使用ubuntu18.04（二） 12、设置默认终端 使用命令sudo update-alternatives --config x-terminal-emulator 然后就可以选择了</description>
     </item>
     
+    <item>
+      <title>优雅地使用ubuntu18</title>
+      <link>https://fiveplus.top/hugoblog/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04%E4%B8%80/</link>
+      <pubDate>Sun, 09 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04%E4%B8%80/</guid>
+      <description>文章链接 优雅地使用ubuntu18.04（一） 优雅地使用ubuntu18.04（二） 1、ubuntu 截图 理论上来说应该是可以直接下面这样，但</description>
+    </item>
+    
   </channel>
 </rss>
