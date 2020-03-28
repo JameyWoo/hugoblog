@@ -1,5 +1,5 @@
 ---
-title: "优雅地使用ubuntu18"
+title: "优雅地使用ubuntu18之二"
 date: 2019-06-10
 draft: false
 categories: ["操作系统"]

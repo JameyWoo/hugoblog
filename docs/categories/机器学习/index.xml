@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>机器学习 on 姬小野的部落</title>
-    <link>https://fiveplus.top/hugoblog/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://fiveplus.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
     <description>Recent content in 机器学习 on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 30 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fiveplus.top/hugoblog/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fiveplus.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Handson Ml Chp2</title>
-      <link>https://fiveplus.top/hugoblog/post/handson-ml-chp2/</link>
+      <link>https://fiveplus.top/post/handson-ml-chp2/</link>
       <pubDate>Sat, 30 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/post/handson-ml-chp2/</guid>
+      <guid>https://fiveplus.top/post/handson-ml-chp2/</guid>
       <description>批量学习（batch learning），一次性批量输入给学习算法，可以被形象的称为填鸭式学习。 在线学习（online learning），按照</description>
     </item>
     
     <item>
       <title>高斯朴素贝叶斯方法进行鸢尾花分类</title>
-      <link>https://fiveplus.top/hugoblog/post/%E9%AB%98%E6%96%AF%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/</link>
+      <link>https://fiveplus.top/post/%E9%AB%98%E6%96%AF%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/</link>
       <pubDate>Sat, 17 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/post/%E9%AB%98%E6%96%AF%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/</guid>
+      <guid>https://fiveplus.top/post/%E9%AB%98%E6%96%AF%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/</guid>
       <description>贝叶斯方法完整代码 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 import seaborn as sns iris = sns.load_dataset(&amp;#39;iris&amp;#39;) X_iris = iris.drop(&amp;#39;species&amp;#39;, axis=1) y_iris = iris[&amp;#39;species&amp;#39;] print(X_iris) from sklearn.cross_validation import train_test_split Xtrain, Xtest, ytrain, ytest = train_test_split(X_iris, y_iris, random_state=1) from sklearn.naive_bayes import GaussianNB model = GaussianNB() model.fit(Xtrain, ytrain) y_model = model.predict(Xtest) from sklearn.metrics import accuracy_score accuracy_score(ytest,</description>
     </item>
     
     <item>
       <title>Python实现简单分类器</title>
-      <link>https://fiveplus.top/hugoblog/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</link>
+      <link>https://fiveplus.top/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
+      <guid>https://fiveplus.top/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
       <description>今天重新开始学习机器学习，训练了一个简单的分类器。 如何工作的呢？给定一组训练数据，他们的参数有三个，x轴坐标，y轴坐标，类别。即(x, y, c)</description>
     </item>
     

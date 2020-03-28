@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 姬小野的部落</title>
-    <link>https://fiveplus.top/hugoblog/tags/</link>
+    <link>https://fiveplus.top/tags/</link>
     <description>Recent content in Tags on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 28 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fiveplus.top/hugoblog/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fiveplus.top/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>chrome</title>
-      <link>https://fiveplus.top/hugoblog/tags/chrome/</link>
+      <link>https://fiveplus.top/tags/chrome/</link>
       <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/tags/chrome/</guid>
+      <guid>https://fiveplus.top/tags/chrome/</guid>
       <description></description>
     </item>
     
     <item>
       <title>算法</title>
-      <link>https://fiveplus.top/hugoblog/tags/%E7%AE%97%E6%B3%95/</link>
+      <link>https://fiveplus.top/tags/%E7%AE%97%E6%B3%95/</link>
       <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/tags/%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://fiveplus.top/tags/%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title>数学</title>
-      <link>https://fiveplus.top/hugoblog/tags/%E6%95%B0%E5%AD%A6/</link>
+      <link>https://fiveplus.top/tags/%E6%95%B0%E5%AD%A6/</link>
       <pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/tags/%E6%95%B0%E5%AD%A6/</guid>
+      <guid>https://fiveplus.top/tags/%E6%95%B0%E5%AD%A6/</guid>
       <description></description>
     </item>
     

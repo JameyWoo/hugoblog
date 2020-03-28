@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>算法 on 姬小野的部落</title>
-    <link>https://fiveplus.top/hugoblog/tags/%E7%AE%97%E6%B3%95/</link>
+    <link>https://fiveplus.top/tags/%E7%AE%97%E6%B3%95/</link>
     <description>Recent content in 算法 on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 16 Jul 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fiveplus.top/hugoblog/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fiveplus.top/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>倍增法求Lca-最近公共祖先</title>
-      <link>https://fiveplus.top/hugoblog/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <link>https://fiveplus.top/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
       <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <guid>https://fiveplus.top/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
       <description>一. 明确问题 看标题便知道了, 这篇博客力求解决的问题是求出一棵树的两个结点的最近公共祖先(LCA), 方法是倍增法. 那么什么是Lca呢? 它是一棵</description>
     </item>
     

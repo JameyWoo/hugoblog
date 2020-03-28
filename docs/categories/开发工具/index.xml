@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>开发工具 on 姬小野的部落</title>
-    <link>https://fiveplus.top/hugoblog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
+    <link>https://fiveplus.top/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
     <description>Recent content in 开发工具 on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 08 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fiveplus.top/hugoblog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fiveplus.top/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>IDEA及其他开发工具日常使用指南</title>
-      <link>https://fiveplus.top/hugoblog/post/idea%E5%8F%8A%E5%85%B6%E4%BB%96%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+      <link>https://fiveplus.top/post/idea%E5%8F%8A%E5%85%B6%E4%BB%96%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/post/idea%E5%8F%8A%E5%85%B6%E4%BB%96%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://fiveplus.top/post/idea%E5%8F%8A%E5%85%B6%E4%BB%96%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
       <description>1. 引入依赖包 通过如图所示的路径添加tar文件, 即可引入外部包. 2. 单独运行一个java文件 在java文件上右键, 如果你写好了main函数就可以</description>
     </item>
     
     <item>
       <title>Anaconda虚拟环境及PyCharm项目环境设置</title>
-      <link>https://fiveplus.top/hugoblog/post/anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8F%8Apycharm%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</link>
+      <link>https://fiveplus.top/post/anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8F%8Apycharm%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/post/anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8F%8Apycharm%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>https://fiveplus.top/post/anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8F%8Apycharm%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</guid>
       <description>Anaconda虚拟环境 1、创建环境 conda create --name your_env_name python=3.6 或者 conda create -n your_env_name python=3.7 新建一个环境 2、查看环境 进入Anaconda Prompt，使用conda info -e查</description>
     </item>
     
     <item>
       <title>Chrome浏览器使用指南</title>
-      <link>https://fiveplus.top/hugoblog/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+      <link>https://fiveplus.top/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
       <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://fiveplus.top/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
       <description>目录 废话 从ie到国产，从国产到火狐，最后终于到了Chrome，这条路可谓是曲折，与Chrome相见恨晚。用过这么多浏览器，对现在用的Chro</description>
     </item>
     

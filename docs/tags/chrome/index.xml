@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>chrome on 姬小野的部落</title>
-    <link>https://fiveplus.top/hugoblog/tags/chrome/</link>
+    <link>https://fiveplus.top/tags/chrome/</link>
     <description>Recent content in chrome on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 28 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fiveplus.top/hugoblog/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fiveplus.top/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Chrome浏览器使用指南</title>
-      <link>https://fiveplus.top/hugoblog/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+      <link>https://fiveplus.top/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
       <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://fiveplus.top/hugoblog/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://fiveplus.top/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
       <description>目录 废话 从ie到国产，从国产到火狐，最后终于到了Chrome，这条路可谓是曲折，与Chrome相见恨晚。用过这么多浏览器，对现在用的Chro</description>
     </item>
     

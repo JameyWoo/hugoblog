@@ -26,22 +26,22 @@
 <meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
-<link rel="canonical" href="https://fiveplus.top/hugoblog/post/%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/hugoblog/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/hugoblog/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/hugoblog/favicon-16x16.png">
-<link rel="manifest" href="/hugoblog/manifest.json">
-<link rel="mask-icon" href="/hugoblog/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="canonical" href="https://fiveplus.top/post/%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder/" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="manifest" href="../../manifest.json">
+<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/hugoblog/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link href="../../dist/even.c2a46f00.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="自编码器AutoEncoder" />
 <meta property="og:description" content="一. 什么是自编码器 自动编码器 autoencoder, 简单表现编码器为将一组数据进行压缩编码(降维), 解码器将这组数据恢复成高维的数据. 这种编码和解码的过程不是无损" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fiveplus.top/hugoblog/post/%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder/" />
+<meta property="og:url" content="https://fiveplus.top/post/%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder/" />
 <meta property="article:published_time" content="2019-08-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-08-14T00:00:00+00:00" />
 <meta itemprop="name" content="自编码器AutoEncoder">
@@ -69,7 +69,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/hugoblog/" class="logo">fiveplus</a>
+    <a href="../../" class="logo">姬小野</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -79,13 +79,13 @@
 </div>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
-    <a href="/hugoblog/">
+    <a href="../../">
         <li class="mobile-menu-item">Home</li>
-      </a><a href="/hugoblog/post/">
+      </a><a href="../../post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/hugoblog/tags/">
+      </a><a href="../../tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/hugoblog/categories/">
+      </a><a href="../../categories/">
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
@@ -93,19 +93,19 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/hugoblog/" class="logo">fiveplus</a>
+  <a href="../../" class="logo">姬小野</a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
     <li class="menu-item">
-        <a class="menu-item-link" href="/hugoblog/">Home</a>
+        <a class="menu-item-link" href="../../">Home</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/hugoblog/post/">Archives</a>
+        <a class="menu-item-link" href="../../post/">Archives</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/hugoblog/tags/">Tags</a>
+        <a class="menu-item-link" href="../../tags/">Tags</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/hugoblog/categories/">Categories</a>
+        <a class="menu-item-link" href="../../categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -122,7 +122,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-14 </span>
         <div class="post-category">
-            <a href="/hugoblog/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"> 深度学习 </a>
+            <a href="../../categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"> 深度学习 </a>
             </div>
           <span class="more-meta"> 1750 words </span>
           <span class="more-meta"> 4 mins read </span>
@@ -158,13 +158,13 @@
       <h2 id="一-什么是自编码器">一. 什么是自编码器</h2>
 <p>自动编码器 autoencoder, 简单表现编码器为将一组数据进行压缩编码(降维), 解码器将这组数据恢复成高维的数据. 这种编码和解码的过程不是无损的, 因此最终的输出和输入是有一些差异的, 且非常依赖于训练的数据集.</p>
 <p>如图所示
-<img src="/images/20190814_1.png" alt=""></p>
+<img src="../../images/20190814_1.png" alt=""></p>
 <p>如上面这张图所示, 对于一个简单的三层线性神经网络组成的自编码器, 我们在进行神经网络的搭建过程中, 将(input, hidden) 这个过程叫做编码器, 将(hidden, output) 这个过程叫做解码器. 对于mnist数据集而言, 它的维度变化是 784 -&gt; x -&gt; 784, 其中, x &lt; 784, 是编码的维度.</p>
 <hr>
 <h2 id="二-有什么作用">二. 有什么作用</h2>
 <h3 id="1-图像去噪">1) 图像去噪</h3>
 <p>看上去很强啊
-<img src="/images/20190814_2.png" alt=""></p>
+<img src="../../images/20190814_2.png" alt=""></p>
 <h3 id="2-可视化降维">2) 可视化降维</h3>
 <hr>
 <h2 id="三-如何实现">三. 如何实现</h2>
@@ -364,7 +364,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>那么效果如何呢? 上面一排是输入图像, 下面一排是输出图像. 经过自编码器之后, 还原度还是很高的.</p>
-<p><img src="/images/20190814_3.png" alt=""></p>
+<p><img src="../../images/20190814_3.png" alt=""></p>
 <h3 id="2-测试-对有噪声图像的自编码">2) 测试: 对有噪声图像的自编码</h3>
 <p>首先查看一张图片</p>
 <div class="highlight"><div class="chroma">
@@ -385,7 +385,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">a_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><img src="/images/20190814_4.png" alt="">
+</div><p><img src="../../images/20190814_4.png" alt="">
 然后向其中加入噪声</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -400,7 +400,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>这是加入噪声之后的图片, 可以看出差别还是很大的. 那么我们的编码器能还原出如何的效果呢?
-<img src="/images/20190814_5.png" alt=""></p>
+<img src="../../images/20190814_5.png" alt=""></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -422,11 +422,11 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>这是还原后的, 说实话看到这个图片我心里也是很惊讶的. 就在于加入那么多噪声之后, 居然还可以还原的如此清晰. 当然这是对于MNIST数据集而言, 这个数据集比较简单.
-<img src="/images/20190814_6.png" alt=""></p>
+<img src="../../images/20190814_6.png" alt=""></p>
 <h3 id="3-卷积层实现">3) 卷积层实现</h3>
 <p>不同之处在于定义自编码器的神经网络结构
 如图所示
-<img src="/images/20190814_7.png" alt="">
+<img src="../../images/20190814_7.png" alt="">
 可以看到在decoder中经过了两个反卷积层, <!-- raw HTML omitted -->但是由于水平有限, 这个反卷积层看着好奇怪, 不知道是怎么反卷积的. <!-- raw HTML omitted --></p>
 <p>pytorch实现</p>
 <div class="highlight"><div class="chroma">
@@ -549,14 +549,14 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>观察下图的数字9的话, 可以看到损失了不少.
-<img src="/images/20190814_8.png" alt=""></p>
+<img src="../../images/20190814_8.png" alt=""></p>
 <p><strong>再看看噪声图片的处理能力如何</strong></p>
 <p>原图:
-<img src="/images/20190814_9.png" alt="">
+<img src="../../images/20190814_9.png" alt="">
 加入噪声:
-<img src="/images/20190814_10.png" alt="">
+<img src="../../images/20190814_10.png" alt="">
 经过自编码器
-<img src="/images/20190814_11.png" alt="">
+<img src="../../images/20190814_11.png" alt="">
 呃, 效果似乎有点不是很对, 可能是训练的epoch太少了, 毕竟我们可以前面看到训练15个epoch的损失值还是达到了0.18, 而在全连接层的简单自编码器上第二个epoch的损失值就达到了0.08</p>
 <hr>
 <h2 id="四-一些小细节">四. 一些小细节</h2>
@@ -600,12 +600,12 @@
 <footer class="post-footer">
       
       <nav class="post-nav">
-        <a class="prev" href="/hugoblog/post/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%8C%96%E4%B8%BAdfa%E7%8A%B6%E6%80%81%E5%9B%BE/">
+        <a class="prev" href="../../post/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%8C%96%E4%B8%BAdfa%E7%8A%B6%E6%80%81%E5%9B%BE/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">正则表达式转化为DFA状态图</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/hugoblog/post/introduction-to-pytorch%E7%AC%94%E8%AE%B0/">
+        <a class="next" href="../../post/introduction-to-pytorch%E7%AC%94%E8%AE%B0/">
             <span class="next-text nav-default">Introduction to PyTorch 笔记</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
@@ -640,7 +640,7 @@
       <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
       <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
       <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://fiveplus.top/hugoblog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  <a href="https://fiveplus.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
@@ -675,7 +675,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/hugoblog/dist/even.26188efa.min.js"></script>
+<script type="text/javascript" src="../../dist/even.26188efa.min.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},

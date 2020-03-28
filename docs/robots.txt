@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://fiveplus.top/hugoblog/sitemap.xml
+Sitemap: https://fiveplus.top/sitemap.xml
