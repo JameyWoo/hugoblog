@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Handson Ml Chp2 - 姬小野的部落</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="姬小野" /><meta name="description" content="批量学习（batch learning），一次性批量输入给学习算法，可以被形象的称为填鸭式学习。 在线学习（online learning），按照" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://fiveplus.top/hugoblog/post/handson-ml-chp2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/hugoblog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/hugoblog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/hugoblog/favicon-16x16.png">
+<link rel="manifest" href="/hugoblog/manifest.json">
+<link rel="mask-icon" href="/hugoblog/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/hugoblog/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Handson Ml Chp2" />
+<meta property="og:description" content="批量学习（batch learning），一次性批量输入给学习算法，可以被形象的称为填鸭式学习。 在线学习（online learning），按照" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiveplus.top/hugoblog/post/handson-ml-chp2/" />
+<meta property="article:published_time" content="2019-03-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-03-30T00:00:00+00:00" />
+<meta itemprop="name" content="Handson Ml Chp2">
+<meta itemprop="description" content="批量学习（batch learning），一次性批量输入给学习算法，可以被形象的称为填鸭式学习。 在线学习（online learning），按照">
+<meta itemprop="datePublished" content="2019-03-30T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-03-30T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2858">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Handson Ml Chp2"/>
+<meta name="twitter:description" content="批量学习（batch learning），一次性批量输入给学习算法，可以被形象的称为填鸭式学习。 在线学习（online learning），按照"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/hugoblog/" class="logo">fiveplus</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/hugoblog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/hugoblog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/hugoblog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/hugoblog/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/hugoblog/" class="logo">fiveplus</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/hugoblog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/hugoblog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/hugoblog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/hugoblog/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Handson Ml Chp2</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-30 </span>
+        <div class="post-category">
+            <a href="/hugoblog/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"> 机器学习 </a>
+            </div>
+          <span class="more-meta"> 2858 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>批量学习（batch learning），一次性批量输入给学习算法，可以被形象的称为填鸭式学习。
+在线学习（online learning），按照顺序，循序的学习，不断的去修正模型，进行优化。</p>
+<p>batch learning 如果数据很大的话，可以使用MapReduce技术，或者使用online learning。</p>
+<p>performance measure 使用RMSE（root mean square error），也就是均方根误差。看https://www.jianshu.com/p/9ee85fdad150 。学到了root 是根号的意思。</p>
+<p>hypothesis ：假设
+outlier ：异常值</p>
+<p>有很多异常值（很大）的话，可能倾向于用MAE。</p>
+<blockquote>
+<p>RMSE 和 MAE 都是测量预测值和目标值两个向量距离的方法。有多种测量距离的方法，或范数：
+计算对应欧几里得范数的平方和的根（RMSE）：这个距离介绍过。它也称作ℓ2范数，标记为 （或只是 ）。
+计算对应于ℓ1（标记为 ）范数的绝对值和（MAE）。有时，也称其为曼哈顿范数，因为它测量了城市中的两点，沿着矩形的边行走的距离。
+更一般的，包含n个元素的向量v的ℓk范数（K 阶闵氏范数），定义成</p>
+</blockquote>
+<blockquote>
+<p>ℓ0（汉明范数）只显示了这个向量的基数（即，非零元素的个数），ℓ∞（切比雪夫范数）是向量中最大的绝对值。</p>
+</blockquote>
+<blockquote>
+<p>范数的指数越高，就越关注大的值而忽略小的值。这就是为什么 RMSE 比 MAE 对异常值更敏感。但是当异常值是指数分布的（类似正态曲线），RMSE 就会表现很好。</p>
+</blockquote>
+<p>entry ：条目，entries
+histogram ：统计直方图
+histogram ：后端</p>
+<p>数据可能经过预处理，这不一定会出错，但你得知道数据是怎么来的。</p>
+<p>feature scaling ：特征缩放</p>
+<p>如果右边的属性很长，会处理这些属性，使其变为正态分布。</p>
+<p>P49：生成随机排列以获得比较随机的train和test集划分。random seed控制结果。
+P50：使用hash方法来生成稳定的train、test集，当得到新的数据时，原来的划分保持不变，新的实例同样进行划分。
+调用的库是hashlib，可以稍微研究一下python中的hash方法。
+增加一列索引index。
+可以使用scikit learn提供的函数</p>
+<p>P51：讲到要使用分层采样，因为不同层次的样本数量是不一样的，如果全都随机采样的话，误差会比较大。
+strata：层
+stratify：分层
+使用sklearn提供的分层类，配合pandas的where等，分层正确可以获得较大的性能提升。
+还可以查看分层比例。</p>
+<p>pandas的where方法</p>
+<blockquote>
+<p>Series.where(cond, other=nan, inplace=False, axis=None, level=None, errors=‘raise’, try_cast=False, raise_on_error=None)
+如果 cond 为真，保持原来的值，否则替换为other， inplace为真标识在原数据上操作，为False标识在原数据的copy上操作。</p>
+</blockquote>
+<p>insight：见解，洞察力
+density：密度</p>
+<p>分析数据，数据的可视化：可以得到数据之间的联系，哪些数据更有用，从而更加有技巧地进行训练；而且，从数据的可视化中，就可以得出一些只是看数据得不到的结论，图像能使信息暴露出来，所以matplotlib在机器学习中会有那么重要的作用，而看到的哪些讲机器学习的书、比赛的notebook，他们都有大量的数据可视化，这是呈现数据，探索数据的过程，也是：为什么此模型能够比其他人的模型更加强大的原因。但是数据分析有套路，要多看熟悉这些套路。</p>
+<p>alpha参数的作用：它是一个设置透明度的参数。看到书上用它时，觉得没啥用啊，不是每个点都会设置一样的透明度吗？但是转念一想，存在透明度的话，点多的地方，颜色就会深，而点少的地方颜色就会浅。这就是透明度的作用啊！</p>
+<p>correlation：相关；关联
+median：中位数
+coefficient：率；系数
+correlation coefficient：相关系数</p>
+<p>可以使用corr方法获取属性两两之间的（linear）相关性。（可以说是很强了！没想到居然还提供了这种方法。不过相关系数是怎么计算的？）
+得到了相关性，然后呢？有什么作用吗？
+书上说：想要移除掉相关性大的属性，避免重复。所谓数据清洗。</p>
+<p>属性的结合，可能会获取更加有效的数据。</p>
+<p>数据清洗：missing features
+三种策略
+sklearn提供了一种Imputer类来实现确实数据的填充</p>
+<p>要设计自己的读取、划分数据函数，一种通用的方法，能够对不同的数据进行划分。</p>
+<p>想到一个问题：如何将自己写的类，在python中import？就像numpy那样？但是numpy不是一个类而是一个包，那么如何制作自己的包？</p>
+<p>interfeace：接口</p>
+<p>P61讲述了sklearn的设计风格
+评估器、转换器等的设计模式，统一性。</p>
+<p>将文本属性转化成数字。标签编码。</p>
+<p>sklearn.preprocessing</p>
+<p>独热编码OneHotEncoder</p>
+<p>sparse matrix：稀疏矩阵。书上一般说SciPy sparse matrix</p>
+<p>text attribute -&gt; num -&gt; one hot; text -&gt; one hot; 可选scipy</p>
+<p>设计自定义的transformers，三种method，fit，transform，fit_transform。
+使用两个基类，提供一些功能。</p>
+<p>feature scaling：特征缩放
+normalization、standardization(less attected by outliers)
+只能向数据集拟合：这样更准确。</p>
+<p>pipelines class
+数值属性和文本属性的特征可以分开设置pipeline，然后可以使用FeatureUnion来合并，真是方便！不过这个pipeline的设计有点麻烦。</p>
+<p>选择模型、拟合、计算error。
+underfitting and overfitting
+cross validation：交叉验证。比较可靠的评估方式。
+utility function：效用函数。越大越好
+cost function：成本函数。越小越好</p>
+<p>overfitting的可怕，还以为放出决策树回归出来会吊打线性回归呢，结果被吊打了，哈哈。</p>
+<p>ensemble learning：集成学习。如random forests</p>
+<p>把模型和训练结果保存下来，以便以后的对比。
+可以使用pickle，或者sklearn.externals.joblib。
+可以说是很方便了。</p>
+<p>fine tune：微调</p>
+<p>超参数：hyperparameter</p>
+<blockquote>
+<p>在机器学习的上下文中，超参数是在开始学习过程之前设置值的参数，而不是通过训练得到的参数数据。通常情况下，需要对超参数进行优化，给学习机选择一组最优超参数，以提高学习的性能和效果。
+在机器学习的上下文中，超参数是在开始学习过程之前设置值的参数。 相反，其他参数的值通过训练得出。
+超参数：
+定义关于模型的更高层次的概念，如复杂性或学习能力。
+不能直接从标准模型培训过程中的数据中学习，需要预先定义。
+可以通过设置不同的值，训练不同的模型和选择更好的测试值来决定</p>
+</blockquote>
+<p>超参数的一些示例：</p>
+<ul>
+<li>树的数量或树的深度</li>
+<li>矩阵分解中潜在因素的数量</li>
+<li>学习率（多种模式）</li>
+<li>深层神经网络隐藏层数</li>
+<li>k均值聚类中的簇数</li>
+</ul>
+<p>amazing Grid Search！直译是网格搜索，但是显然不能这么理解。
+这是sklearn提供的一种超级方便的选择hyperparameter的工具，简直是开挂啊。fine tune果然不赖。
+还有一些分析的技巧。不过话说想要选好一组适合的超参数要训练好多组啊。
+甚至直接获取the best estimator</p>
+<p>Randomized Search 和 Gird相比，有几个有点。但目的和作用是一样的。</p>
+<p>Ensemble Method 集成方法</p>
+<p>分析最佳模型和他们的误差，可以获得更深的对问题的理解。比如可以给出每个属性对于做出准确预测的相对重要性，然后去掉某些属性，是否会使得分类更加准确。</p>
+<p>maintain：维护</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">姬小野</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-30
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/hugoblog/post/%E9%9A%8F%E6%9C%BA%E6%A0%91%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95-%E5%B0%B1%E6%98%AF%E6%A0%91/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">随机树生成算法 就是树! </span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/hugoblog/post/csapp-datalab%E5%AE%9E%E9%AA%8C/">
+            <span class="next-text nav-default">Csapp Datalab实验</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/JameyWoo" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://fiveplus.top/hugoblog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">姬小野</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/hugoblog/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
