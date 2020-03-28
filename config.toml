@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://fiveplus.top/hugoblog/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "姬小野的部落"
