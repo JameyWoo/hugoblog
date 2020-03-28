@@ -24,7 +24,77 @@
   
   <url>
     <loc>https://fiveplus.top/hugoblog/categories/</loc>
-    <lastmod>2018-09-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E5%88%A9%E7%94%A8%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E8%BF%9B%E8%A1%8C%E8%8A%B1%E7%9A%84%E5%88%86%E7%B1%BB/</loc>
+    <lastmod>2019-08-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2019-08-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E4%BD%BF%E7%94%A8face_recognition%E8%BF%9B%E8%A1%8C%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/</loc>
+    <lastmod>2019-06-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04%E4%BA%8C/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/categories/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2019-04-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E9%9A%8F%E6%9C%BA%E6%A0%91%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95-%E5%B0%B1%E6%98%AF%E6%A0%91/</loc>
+    <lastmod>2019-04-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E6%B1%87%E7%BC%96%E4%B8%8Egdb%E8%B0%83%E8%AF%95%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2018-11-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E9%AB%98%E6%96%AF%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/</loc>
+    <lastmod>2018-11-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -53,6 +123,54 @@
   <url>
     <loc>https://fiveplus.top/hugoblog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91_%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82%E8%A7%A3%E6%B3%95/</loc>
+    <lastmod>2018-07-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</loc>
+    <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6_c&#43;&#43;%E7%94%9F%E6%88%90%E7%9C%9F%E5%80%BC%E8%A1%A8_%E6%A8%A1%E6%8B%9F/</loc>
+    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E5%88%9D%E6%AD%A5%E6%95%B0%E8%AE%BA-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97-%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</loc>
+    <lastmod>2018-01-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/tags/%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2018-01-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/hugoblog/post/%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

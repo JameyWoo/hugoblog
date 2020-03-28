@@ -21,12 +21,111 @@
     </item>
     
     <item>
+      <title>利用迁移学习进行花的分类</title>
+      <link>https://fiveplus.top/hugoblog/post/%E5%88%A9%E7%94%A8%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E8%BF%9B%E8%A1%8C%E8%8A%B1%E7%9A%84%E5%88%86%E7%B1%BB/</link>
+      <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E5%88%A9%E7%94%A8%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E8%BF%9B%E8%A1%8C%E8%8A%B1%E7%9A%84%E5%88%86%E7%B1%BB/</guid>
+      <description>前几天写了个小项目, 利用深度学习里的迁移学习方法做花的分类, 下面是项目的github地址. https://github.com/JameyWoo/transfer-learning 感兴趣的同学可以了解一下, 源码比较简单, 下面是项</description>
+    </item>
+    
+    <item>
+      <title>使用face_recognition进行人脸特征检测</title>
+      <link>https://fiveplus.top/hugoblog/post/%E4%BD%BF%E7%94%A8face_recognition%E8%BF%9B%E8%A1%8C%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E4%BD%BF%E7%94%A8face_recognition%E8%BF%9B%E8%A1%8C%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/</guid>
+      <description>效果图 调用face_recognition.face_landmarks()方法即可得到人脸特征点, 返回一个字典, 下图是返回的数据, 包括ch</description>
+    </item>
+    
+    <item>
+      <title>优雅地使用ubuntu18</title>
+      <link>https://fiveplus.top/hugoblog/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04%E4%BA%8C/</link>
+      <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04%E4%BA%8C/</guid>
+      <description>文章链接 优雅地使用ubuntu18.04（一） 优雅地使用ubuntu18.04（二） 12、设置默认终端 使用命令sudo update-alternatives --config x-terminal-emulator 然后就可以选择了</description>
+    </item>
+    
+    <item>
+      <title>随机树生成算法 就是树! </title>
+      <link>https://fiveplus.top/hugoblog/post/%E9%9A%8F%E6%9C%BA%E6%A0%91%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95-%E5%B0%B1%E6%98%AF%E6%A0%91/</link>
+      <pubDate>Tue, 02 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E9%9A%8F%E6%9C%BA%E6%A0%91%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95-%E5%B0%B1%E6%98%AF%E6%A0%91/</guid>
+      <description>一个生成随机树（此树非彼数）的算法，树的结点编号从1开始，这个算法生成了树的结点个数、树的结点的权值、树的每条边的结点。 如下面是一棵10结点</description>
+    </item>
+    
+    <item>
+      <title>汇编与gdb调试学习</title>
+      <link>https://fiveplus.top/hugoblog/post/%E6%B1%87%E7%BC%96%E4%B8%8Egdb%E8%B0%83%E8%AF%95%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E6%B1%87%E7%BC%96%E4%B8%8Egdb%E8%B0%83%E8%AF%95%E5%AD%A6%E4%B9%A0/</guid>
+      <description>1、在gdb中如何列出汇编代码 应该是不可以用list 命令列出汇编代码的。 但可以使用display /i $pc 命令在调试的时候出了列出一行源码，也列出</description>
+    </item>
+    
+    <item>
+      <title>高斯朴素贝叶斯方法进行鸢尾花分类</title>
+      <link>https://fiveplus.top/hugoblog/post/%E9%AB%98%E6%96%AF%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/</link>
+      <pubDate>Sat, 17 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E9%AB%98%E6%96%AF%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/</guid>
+      <description>贝叶斯方法完整代码 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 import seaborn as sns iris = sns.load_dataset(&amp;#39;iris&amp;#39;) X_iris = iris.drop(&amp;#39;species&amp;#39;, axis=1) y_iris = iris[&amp;#39;species&amp;#39;] print(X_iris) from sklearn.cross_validation import train_test_split Xtrain, Xtest, ytrain, ytest = train_test_split(X_iris, y_iris, random_state=1) from sklearn.naive_bayes import GaussianNB model = GaussianNB() model.fit(Xtrain, ytrain) y_model = model.predict(Xtest) from sklearn.metrics import accuracy_score accuracy_score(ytest,</description>
+    </item>
+    
+    <item>
       <title>Chrome浏览器使用指南</title>
       <link>https://fiveplus.top/hugoblog/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
       <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://fiveplus.top/hugoblog/post/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
       <description>目录 废话 从ie到国产，从国产到火狐，最后终于到了Chrome，这条路可谓是曲折，与Chrome相见恨晚。用过这么多浏览器，对现在用的Chro</description>
+    </item>
+    
+    <item>
+      <title>斐波那契_矩阵快速幂解法</title>
+      <link>https://fiveplus.top/hugoblog/post/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91_%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82%E8%A7%A3%E6%B3%95/</link>
+      <pubDate>Thu, 26 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91_%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82%E8%A7%A3%E6%B3%95/</guid>
+      <description>学过矩阵学了矩阵再看斐波那契数列, 秒懂, 结合矩阵快速幂, 加深了一个概念的理解: 矩阵也就是一个基本的计算单位. 矩阵快速幂解法其实就是快速幂+矩</description>
+    </item>
+    
+    <item>
+      <title>倍增法求Lca-最近公共祖先</title>
+      <link>https://fiveplus.top/hugoblog/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <description>一. 明确问题 看标题便知道了, 这篇博客力求解决的问题是求出一棵树的两个结点的最近公共祖先(LCA), 方法是倍增法. 那么什么是Lca呢? 它是一棵</description>
+    </item>
+    
+    <item>
+      <title>离散数学_C&#43;&#43;生成真值表_模拟</title>
+      <link>https://fiveplus.top/hugoblog/post/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6_c&#43;&#43;%E7%94%9F%E6%88%90%E7%9C%9F%E5%80%BC%E8%A1%A8_%E6%A8%A1%E6%8B%9F/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6_c&#43;&#43;%E7%94%9F%E6%88%90%E7%9C%9F%E5%80%BC%E8%A1%A8_%E6%A8%A1%E6%8B%9F/</guid>
+      <description>生成真值表的代码 输入一个真值表达式, 程序自动生成它的真值表. 纯模拟思路 合取* 析取| 单条件&amp;gt; 双条件- 非! 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16</description>
+    </item>
+    
+    <item>
+      <title>初步数论 扩展欧几里得 线性同余方程</title>
+      <link>https://fiveplus.top/hugoblog/post/%E5%88%9D%E6%AD%A5%E6%95%B0%E8%AE%BA-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97-%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</link>
+      <pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E5%88%9D%E6%AD%A5%E6%95%B0%E8%AE%BA-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97-%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</guid>
+      <description>这篇博客我将介绍数论中的扩展欧几里得算法(extended Euclidean algorithm ),以及其在**解线性同余方程(乘法逆元)**中的运用. 首先要了解几个概念: 欧</description>
+    </item>
+    
+    <item>
+      <title>数组中出现次数超过一半的数字</title>
+      <link>https://fiveplus.top/hugoblog/post/%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>用头脑风暴学算法，对于一个问题，我们不只是要解决它，还要去思考有什么好的方法，差的方法去解决，甚至是一些错误的但可以提供思想借鉴的方法。 此问</description>
     </item>
     
   </channel>

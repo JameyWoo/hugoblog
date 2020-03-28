@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作系统 on 姬小野的部落</title>
+    <link>https://fiveplus.top/hugoblog/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+    <description>Recent content in 操作系统 on 姬小野的部落</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 10 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fiveplus.top/hugoblog/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>优雅地使用ubuntu18</title>
+      <link>https://fiveplus.top/hugoblog/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04%E4%BA%8C/</link>
+      <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04%E4%BA%8C/</guid>
+      <description>文章链接 优雅地使用ubuntu18.04（一） 优雅地使用ubuntu18.04（二） 12、设置默认终端 使用命令sudo update-alternatives --config x-terminal-emulator 然后就可以选择了</description>
+    </item>
+    
+  </channel>
+</rss>

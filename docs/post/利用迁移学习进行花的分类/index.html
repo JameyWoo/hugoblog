@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Hello Hugo - 姬小野的部落</title>
+  <title>利用迁移学习进行花的分类 - 姬小野的部落</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="姬小野" /><meta name="description" content="你好! Hugo" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="姬小野" /><meta name="description" content="前几天写了个小项目, 利用深度学习里的迁移学习方法做花的分类, 下面是项目的github地址. https://github.com/JameyWoo/transfer-learning 感兴趣的同学可以了解一下, 源码比较简单, 下面是项" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
-<link rel="canonical" href="https://fiveplus.top/hugoblog/post/hello-hugo/" />
+<link rel="canonical" href="https://fiveplus.top/hugoblog/post/%E5%88%A9%E7%94%A8%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E8%BF%9B%E8%A1%8C%E8%8A%B1%E7%9A%84%E5%88%86%E7%B1%BB/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/hugoblog/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/hugoblog/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/hugoblog/favicon-16x16.png">
@@ -38,23 +38,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Hello Hugo" />
-<meta property="og:description" content="你好! Hugo" />
+<meta property="og:title" content="利用迁移学习进行花的分类" />
+<meta property="og:description" content="前几天写了个小项目, 利用深度学习里的迁移学习方法做花的分类, 下面是项目的github地址. https://github.com/JameyWoo/transfer-learning 感兴趣的同学可以了解一下, 源码比较简单, 下面是项" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fiveplus.top/hugoblog/post/hello-hugo/" />
-<meta property="article:published_time" content="2020-03-28T09:42:54+08:00" />
-<meta property="article:modified_time" content="2020-03-28T09:42:54+08:00" />
-<meta itemprop="name" content="Hello Hugo">
-<meta itemprop="description" content="你好! Hugo">
-<meta itemprop="datePublished" content="2020-03-28T09:42:54&#43;08:00" />
-<meta itemprop="dateModified" content="2020-03-28T09:42:54&#43;08:00" />
-<meta itemprop="wordCount" content="4">
+<meta property="og:url" content="https://fiveplus.top/hugoblog/post/%E5%88%A9%E7%94%A8%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E8%BF%9B%E8%A1%8C%E8%8A%B1%E7%9A%84%E5%88%86%E7%B1%BB/" />
+<meta property="article:published_time" content="2019-08-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-08-05T00:00:00+00:00" />
+<meta itemprop="name" content="利用迁移学习进行花的分类">
+<meta itemprop="description" content="前几天写了个小项目, 利用深度学习里的迁移学习方法做花的分类, 下面是项目的github地址. https://github.com/JameyWoo/transfer-learning 感兴趣的同学可以了解一下, 源码比较简单, 下面是项">
+<meta itemprop="datePublished" content="2019-08-05T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-05T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="440">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hello Hugo"/>
-<meta name="twitter:description" content="你好! Hugo"/>
+<meta name="twitter:title" content="利用迁移学习进行花的分类"/>
+<meta name="twitter:description" content="前几天写了个小项目, 利用深度学习里的迁移学习方法做花的分类, 下面是项目的github地址. https://github.com/JameyWoo/transfer-learning 感兴趣的同学可以了解一下, 源码比较简单, 下面是项"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -117,12 +117,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Hello Hugo</h1>
+      <h1 class="post-title">利用迁移学习进行花的分类</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-03-28 </span>
-        
-          <span class="more-meta"> 4 words </span>
+        <span class="post-time"> 2019-08-05 </span>
+        <div class="post-category">
+            <a href="/hugoblog/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"> 深度学习 </a>
+            </div>
+          <span class="more-meta"> 440 words </span>
           <span class="more-meta"> 1 min read </span>
         
       </div>
@@ -131,11 +133,111 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#环境">环境</a></li>
+    <li><a href="#requirements">requirements</a></li>
+    <li><a href="#使用方法">使用方法</a>
+      <ul>
+        <li><a href="#训练">训练</a></li>
+        <li><a href="#测试">测试</a></li>
+        <li><a href="#运行">运行</a></li>
+      </ul>
+    </li>
+    <li><a href="#例子">例子</a>
+      <ul>
+        <li><a href="#demo-1">demo 1</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
-      <h1 id="你好-hugo">你好! Hugo</h1>
+      <p>前几天写了个小项目, 利用深度学习里的迁移学习方法做花的分类, 下面是项目的github地址.
+<a href="https://github.com/JameyWoo/transfer-learning">https://github.com/JameyWoo/transfer-learning</a></p>
+<p>感兴趣的同学可以了解一下, 源码比较简单, 下面是项目的说明</p>
+<hr>
+<h1 id="transfer-learning">transfer learning</h1>
+<p>@ author 姬小野</p>
+<p>&mdash; 迁移学习对五种花分类</p>
+<h2 id="环境">环境</h2>
+<p>ubuntu 18.04</p>
+<h2 id="requirements">requirements</h2>
+<ol>
+<li>torch==1.1.0</li>
+<li>numpy==1.17.0</li>
+<li>torchvision==0.3.0</li>
+</ol>
+<h2 id="使用方法">使用方法</h2>
+<h3 id="训练">训练</h3>
+<p>下载vgg的预训练模型
+<code>download.pytorch.org/models/vgg16-397923af.pth</code>放到目录<code>/home/jamey/.cache/torch/checkpoints</code>下
+执行
+<code>python train.py</code></p>
+<p>即可在当前目录下训练自己的模型</p>
+<p>ps. 在普通笔记本上生成模型的时间较久</p>
+<h3 id="测试">测试</h3>
+<p>执行</p>
+<p><code>python test.py</code></p>
+<p>即可测试模型对花分类的准确率</p>
+<p>当epoch为3时, 模型的准确率达到了83%, 其中, 除roses外准确率都极高. (大多数错误都是由roses引起的)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Test Accuracy of daisy: 84% <span class="o">(</span>78/92<span class="o">)</span>
+Test Accuracy of dandelion: 94% <span class="o">(</span>125/132<span class="o">)</span>
+Test Accuracy of roses: 59% <span class="o">(</span>54/91<span class="o">)</span>
+Test Accuracy of sunflowers: 85% <span class="o">(</span>86/101<span class="o">)</span>
+Test Accuracy of tulips: 87% <span class="o">(</span>108/124<span class="o">)</span>
+
+Test Accuracy <span class="o">(</span>Overall<span class="o">)</span>: 83% <span class="o">(</span>451/540<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="运行">运行</h3>
+<p>对一张图片进行分类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">----------------usage----------------
+    run the demo with:
+    python demo.py -m model_name -i image_name.jpg
+    python demo.py --image image_name.jpg
+    python demo.py -i image_name.jpg
+    or use <span class="sb">`</span>python demo.py -h<span class="sb">`</span> to get <span class="nb">help</span>
+    -----------------end-----------------
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="例子">例子</h2>
+<h3 id="demo-1">demo 1</h3>
+<p><img src="/images/20190805_1.png" alt=""></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ python demo.py -m my_vgg16_3epochs.pth -i image/yvjingxiang_1.png
+郁金香
+</code></pre></td></tr></table>
+</div>
+</div><p>demo.py 的输出结果是图片的识别的花的中文名</p>
 
     </div>
 
@@ -147,7 +249,7 @@
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2020-03-28
+        2019-08-05
         
     </span>
   </p>
@@ -157,9 +259,13 @@
 <footer class="post-footer">
       
       <nav class="post-nav">
-        
-        <a class="next" href="/hugoblog/post/%E5%88%A9%E7%94%A8%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E8%BF%9B%E8%A1%8C%E8%8A%B1%E7%9A%84%E5%88%86%E7%B1%BB/">
-            <span class="next-text nav-default">利用迁移学习进行花的分类</span>
+        <a class="prev" href="/hugoblog/post/hello-hugo/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Hello Hugo</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/hugoblog/post/%E4%BD%BF%E7%94%A8face_recognition%E8%BF%9B%E8%A1%8C%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/">
+            <span class="next-text nav-default">使用face_recognition进行人脸特征检测</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
