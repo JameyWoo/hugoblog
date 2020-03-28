@@ -32,7 +32,7 @@
     <item>
       <title>Python实现简单分类器</title>
       <link>https://fiveplus.top/hugoblog/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://fiveplus.top/hugoblog/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
       <description>今天重新开始学习机器学习，训练了一个简单的分类器。 如何工作的呢？给定一组训练数据，他们的参数有三个，x轴坐标，y轴坐标，类别。即(x, y, c)</description>

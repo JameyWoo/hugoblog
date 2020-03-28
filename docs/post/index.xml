@@ -57,6 +57,15 @@
     </item>
     
     <item>
+      <title>Darknet  目标检测开源库学习记录</title>
+      <link>https://fiveplus.top/hugoblog/post/darknet-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%BC%80%E6%BA%90%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/darknet-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%BC%80%E6%BA%90%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</guid>
+      <description>1. 效果展示 官网链接 darknet 实现了c语言版本的yolo v3, 不依赖任何其他库. 因此安装非常简单. 效果图: 2. 安装方法 如何安装? 1 2 3 git clone https://github.com/pjreddie/darknet cd darknet make 然后下载y</description>
+    </item>
+    
+    <item>
       <title>使用face_recognition进行人脸特征检测</title>
       <link>https://fiveplus.top/hugoblog/post/%E4%BD%BF%E7%94%A8face_recognition%E8%BF%9B%E8%A1%8C%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
@@ -174,6 +183,33 @@
     </item>
     
     <item>
+      <title>数组中出现次数超过一半的数字</title>
+      <link>https://fiveplus.top/hugoblog/post/%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>用头脑风暴学算法，对于一个问题，我们不只是要解决它，还要去思考有什么好的方法，差的方法去解决，甚至是一些错误的但可以提供思想借鉴的方法。 此问</description>
+    </item>
+    
+    <item>
+      <title>Python实现简单分类器</title>
+      <link>https://fiveplus.top/hugoblog/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</link>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
+      <description>今天重新开始学习机器学习，训练了一个简单的分类器。 如何工作的呢？给定一组训练数据，他们的参数有三个，x轴坐标，y轴坐标，类别。即(x, y, c)</description>
+    </item>
+    
+    <item>
+      <title>Tarjan算法缩点&#43;DAG最长路 DP</title>
+      <link>https://fiveplus.top/hugoblog/post/tarjan%E7%AE%97%E6%B3%95%E7%BC%A9%E7%82%B9&#43;dag%E6%9C%80%E9%95%BF%E8%B7%AF-dp/</link>
+      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/tarjan%E7%AE%97%E6%B3%95%E7%BC%A9%E7%82%B9&#43;dag%E6%9C%80%E9%95%BF%E8%B7%AF-dp/</guid>
+      <description>我们按照复杂程度来讨论不同的Tarjan算法变形的差异. 第一个问题: Tarjan算法找出一个图里面的全部强连通分量(包括单独的点). 但此时只</description>
+    </item>
+    
+    <item>
       <title>斐波那契_矩阵快速幂解法</title>
       <link>https://fiveplus.top/hugoblog/post/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91_%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82%E8%A7%A3%E6%B3%95/</link>
       <pubDate>Thu, 26 Jul 2018 00:00:00 +0000</pubDate>
@@ -192,6 +228,24 @@
     </item>
     
     <item>
+      <title>DP_最长不下降子序列_LIS</title>
+      <link>https://fiveplus.top/hugoblog/post/dp_%E6%9C%80%E9%95%BF%E4%B8%8D%E4%B8%8B%E9%99%8D%E5%AD%90%E5%BA%8F%E5%88%97_lis/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/dp_%E6%9C%80%E9%95%BF%E4%B8%8D%E4%B8%8B%E9%99%8D%E5%AD%90%E5%BA%8F%E5%88%97_lis/</guid>
+      <description>序言 同类的问题还有*&amp;ldquo;最长上升子序列&amp;rdquo;, &amp;ldquo;最长下降子序列&amp;rdquo;, &amp;hellip;* 他们的不同就在于定义的core</description>
+    </item>
+    
+    <item>
+      <title>DP_最长回文子串</title>
+      <link>https://fiveplus.top/hugoblog/post/dp_%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/dp_%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</guid>
+      <description>####DP问题, 最长回文子串 最长回文子串问题指的是在一个字符串中, 是回文子串的长度的最大值. 这里的回文子串是连续的. 如字符串&amp;quot;P</description>
+    </item>
+    
+    <item>
       <title>离散数学_C&#43;&#43;生成真值表_模拟</title>
       <link>https://fiveplus.top/hugoblog/post/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6_c&#43;&#43;%E7%94%9F%E6%88%90%E7%9C%9F%E5%80%BC%E8%A1%A8_%E6%A8%A1%E6%8B%9F/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
@@ -201,84 +255,30 @@
     </item>
     
     <item>
-      <title>初步数论 扩展欧几里得 线性同余方程</title>
-      <link>https://fiveplus.top/hugoblog/post/%E5%88%9D%E6%AD%A5%E6%95%B0%E8%AE%BA-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97-%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</link>
-      <pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://fiveplus.top/hugoblog/post/%E5%88%9D%E6%AD%A5%E6%95%B0%E8%AE%BA-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97-%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</guid>
-      <description>这篇博客我将介绍数论中的扩展欧几里得算法(extended Euclidean algorithm ),以及其在**解线性同余方程(乘法逆元)**中的运用. 首先要了解几个概念: 欧</description>
-    </item>
-    
-    <item>
-      <title>Darknet  目标检测开源库学习记录</title>
-      <link>https://fiveplus.top/hugoblog/post/darknet-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%BC%80%E6%BA%90%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://fiveplus.top/hugoblog/post/darknet-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%BC%80%E6%BA%90%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</guid>
-      <description>1. 效果展示 官网链接 darknet 实现了c语言版本的yolo v3, 不依赖任何其他库. 因此安装非常简单. 效果图: 2. 安装方法 如何安装? 1 2 3 git clone https://github.com/pjreddie/darknet cd darknet make 然后下载y</description>
-    </item>
-    
-    <item>
-      <title>DP_最长不下降子序列_LIS</title>
-      <link>https://fiveplus.top/hugoblog/post/dp_%E6%9C%80%E9%95%BF%E4%B8%8D%E4%B8%8B%E9%99%8D%E5%AD%90%E5%BA%8F%E5%88%97_lis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://fiveplus.top/hugoblog/post/dp_%E6%9C%80%E9%95%BF%E4%B8%8D%E4%B8%8B%E9%99%8D%E5%AD%90%E5%BA%8F%E5%88%97_lis/</guid>
-      <description>序言 同类的问题还有*&amp;ldquo;最长上升子序列&amp;rdquo;, &amp;ldquo;最长下降子序列&amp;rdquo;, &amp;hellip;* 他们的不同就在于定义的core</description>
-    </item>
-    
-    <item>
-      <title>DP_最长回文子串</title>
-      <link>https://fiveplus.top/hugoblog/post/dp_%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://fiveplus.top/hugoblog/post/dp_%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</guid>
-      <description>####DP问题, 最长回文子串 最长回文子串问题指的是在一个字符串中, 是回文子串的长度的最大值. 这里的回文子串是连续的. 如字符串&amp;quot;P</description>
-    </item>
-    
-    <item>
-      <title>Python实现简单分类器</title>
-      <link>https://fiveplus.top/hugoblog/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://fiveplus.top/hugoblog/post/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
-      <description>今天重新开始学习机器学习，训练了一个简单的分类器。 如何工作的呢？给定一组训练数据，他们的参数有三个，x轴坐标，y轴坐标，类别。即(x, y, c)</description>
-    </item>
-    
-    <item>
-      <title>Tarjan算法缩点&#43;DAG最长路 DP</title>
-      <link>https://fiveplus.top/hugoblog/post/tarjan%E7%AE%97%E6%B3%95%E7%BC%A9%E7%82%B9&#43;dag%E6%9C%80%E9%95%BF%E8%B7%AF-dp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://fiveplus.top/hugoblog/post/tarjan%E7%AE%97%E6%B3%95%E7%BC%A9%E7%82%B9&#43;dag%E6%9C%80%E9%95%BF%E8%B7%AF-dp/</guid>
-      <description>我们按照复杂程度来讨论不同的Tarjan算法变形的差异. 第一个问题: Tarjan算法找出一个图里面的全部强连通分量(包括单独的点). 但此时只</description>
-    </item>
-    
-    <item>
       <title>主元素问题_奇妙的思维</title>
       <link>https://fiveplus.top/hugoblog/post/%E4%B8%BB%E5%85%83%E7%B4%A0%E9%97%AE%E9%A2%98_%E5%A5%87%E5%A6%99%E7%9A%84%E6%80%9D%E7%BB%B4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 13 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://fiveplus.top/hugoblog/post/%E4%B8%BB%E5%85%83%E7%B4%A0%E9%97%AE%E9%A2%98_%E5%A5%87%E5%A6%99%E7%9A%84%E6%80%9D%E7%BB%B4/</guid>
       <description>主元素问题 什么是主元素问题? 已知一个数组的大小，并且其中存在一个数，出现的频率大于50%，则称其为该数组的主元素。用一个算法找出这个数，要求</description>
     </item>
     
     <item>
-      <title>数组中出现次数超过一半的数字</title>
-      <link>https://fiveplus.top/hugoblog/post/%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://fiveplus.top/hugoblog/post/%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
-      <description>用头脑风暴学算法，对于一个问题，我们不只是要解决它，还要去思考有什么好的方法，差的方法去解决，甚至是一些错误的但可以提供思想借鉴的方法。 此问</description>
-    </item>
-    
-    <item>
       <title>最大子段和_三种方法</title>
       <link>https://fiveplus.top/hugoblog/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C_%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://fiveplus.top/hugoblog/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C_%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
       <description>今天参加了一场洛谷网的比赛, 深受打击. 寒假过了这么多天, 一直没有认真学习算法, 以至于现在的水平比两个月前还要低. 本来就没有多少底子, 又退步了</description>
+    </item>
+    
+    <item>
+      <title>初步数论 扩展欧几里得 线性同余方程</title>
+      <link>https://fiveplus.top/hugoblog/post/%E5%88%9D%E6%AD%A5%E6%95%B0%E8%AE%BA-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97-%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</link>
+      <pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiveplus.top/hugoblog/post/%E5%88%9D%E6%AD%A5%E6%95%B0%E8%AE%BA-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97-%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</guid>
+      <description>这篇博客我将介绍数论中的扩展欧几里得算法(extended Euclidean algorithm ),以及其在**解线性同余方程(乘法逆元)**中的运用. 首先要了解几个概念: 欧</description>
     </item>
     
   </channel>
