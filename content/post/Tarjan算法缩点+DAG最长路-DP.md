@@ -1,6 +1,6 @@
 ---
 title: "Tarjan算法缩点+DAG最长路 DP"
-date: 2018-8-13
+date: 2018-08-13
 draft: false
 
 categories: ["算法"]

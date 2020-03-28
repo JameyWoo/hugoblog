@@ -1,6 +1,6 @@
 ---
 title: "Darknet  目标检测开源库学习记录"
-date: 2019-6-28
+date: 2019-06-28
 draft: false
 
 categories: ["深度学习"]

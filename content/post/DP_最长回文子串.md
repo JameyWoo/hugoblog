@@ -1,6 +1,6 @@
 ---
 title: "DP_最长回文子串"
-date: 2018-7-11
+date: 2018-07-11
 draft: false
 
 categories: ["算法"]

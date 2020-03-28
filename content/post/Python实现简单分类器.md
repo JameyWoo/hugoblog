@@ -1,6 +1,6 @@
 ---
 title: "Python实现简单分类器"
-date: 2018-9-21
+date: 2018-09-21
 draft: false
 
 categories: ["机器学习"]
