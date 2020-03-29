@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>优雅地使用ubuntu18之二 - 姬小野的部落</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="姬小野" /><meta name="description" content="文章链接 优雅地使用ubuntu18.04（一） 优雅地使用ubuntu18.04（二） 12、设置默认终端 使用命令sudo update-alternatives --config x-terminal-emulator 然后就可以选择了" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://fiveplus.top/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04-%E4%BA%8C/" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="manifest" href="../../manifest.json">
+<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="../../dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="优雅地使用ubuntu18之二" />
+<meta property="og:description" content="文章链接 优雅地使用ubuntu18.04（一） 优雅地使用ubuntu18.04（二） 12、设置默认终端 使用命令sudo update-alternatives --config x-terminal-emulator 然后就可以选择了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiveplus.top/post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04-%E4%BA%8C/" />
+<meta property="article:published_time" content="2019-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-06-10T00:00:00+00:00" />
+<meta itemprop="name" content="优雅地使用ubuntu18之二">
+<meta itemprop="description" content="文章链接 优雅地使用ubuntu18.04（一） 优雅地使用ubuntu18.04（二） 12、设置默认终端 使用命令sudo update-alternatives --config x-terminal-emulator 然后就可以选择了">
+<meta itemprop="datePublished" content="2019-06-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-06-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="689">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="优雅地使用ubuntu18之二"/>
+<meta name="twitter:description" content="文章链接 优雅地使用ubuntu18.04（一） 优雅地使用ubuntu18.04（二） 12、设置默认终端 使用命令sudo update-alternatives --config x-terminal-emulator 然后就可以选择了"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="../../" class="logo">姬小野</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="../../">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="../../post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="../../tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="../../about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="../../categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="../../" class="logo">姬小野</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="../../">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">优雅地使用ubuntu18之二</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-10 </span>
+        <div class="post-category">
+            <a href="../../categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"> 操作系统 </a>
+            </div>
+          <span class="more-meta"> 689 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#文章链接">文章链接</a></li>
+    <li><a href="#12设置默认终端">12、设置默认终端</a></li>
+    <li><a href="#13设置开启自动启动">13、设置开启自动启动</a></li>
+    <li><a href="#14自定义右键">14、自定义右键</a></li>
+    <li><a href="#15使用albert">15、使用albert</a></li>
+    <li><a href="#16设置终端复制黏贴快捷键">16、设置终端复制黏贴快捷键</a></li>
+    <li><a href="#17几个好玩的命令">17、几个好玩的命令</a>
+      <ul>
+        <li><a href="#boxes">boxes</a></li>
+        <li><a href="#终端跑小火车">终端跑小火车</a></li>
+        <li><a href="#黑客帝国代码雨">黑客帝国代码雨</a></li>
+        <li><a href="#screenfetch">screenfetch</a></li>
+      </ul>
+    </li>
+    <li><a href="#18顶栏自动隐藏">18、顶栏自动隐藏</a></li>
+    <li><a href="#19设置字体缩放比例">19、设置字体缩放比例。</a></li>
+    <li><a href="#20安装mac-os-风格主题">20、安装Mac OS 风格主题</a></li>
+    <li><a href="#21修改登录界面的图片">21、修改登录界面的图片</a></li>
+    <li><a href="#22添加应用启动图标">22、添加应用启动图标</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="文章链接">文章链接</h2>
+<p><a href="https://blog.csdn.net/wjh2622075127/article/details/91182584">优雅地使用ubuntu18.04（一）</a>
+<a href="https://blog.csdn.net/wjh2622075127/article/details/91384365">优雅地使用ubuntu18.04（二）</a></p>
+<h2 id="12设置默认终端">12、设置默认终端</h2>
+<p>使用命令<code>sudo update-alternatives --config x-terminal-emulator</code>
+然后就可以选择了
+<img src="../../images/20190610_1.png" alt=""></p>
+<h2 id="13设置开启自动启动">13、设置开启自动启动</h2>
+<p>找到<code>启动应用程序</code></p>
+<p><img src="../../images/20190610_2.png" alt="">
+就可以直接添加自启动了
+<img src="../../images/20190610_3.png" alt=""></p>
+<h2 id="14自定义右键">14、自定义右键</h2>
+<p>想实现文件夹右键，可以执行打开某一指定程序（如我们下载的终端），并设置工作目录为当前目录。
+但还没有实现，挖个坑。</p>
+<h2 id="15使用albert">15、使用albert</h2>
+<p>这个工具类似于windows中的everything
+但感觉不是很好用的样子？虽然有人强烈推荐
+<a href="https://software.opensuse.org/download.html?project=home:manuelschneid3r&amp;package=albert">可以直接下载deb文件进行安装了</a></p>
+<h2 id="16设置终端复制黏贴快捷键">16、设置终端复制黏贴快捷键</h2>
+<p>习惯了用Ctrl+C复制，所以也直接把终端的快捷方式给改了。里面有各种快捷方式，可以根据自己的习惯自定义啊。
+<img src="../../images/20190610_4.png" alt=""></p>
+<h2 id="17几个好玩的命令">17、几个好玩的命令</h2>
+<h3 id="boxes">boxes</h3>
+<p><code>sudo apt install boxes</code>
+<img src="../../images/20190610_5.png" alt=""></p>
+<h3 id="终端跑小火车">终端跑小火车</h3>
+<p><code>sudo apt install sl</code>
+<code>sl</code>
+<img src="../../images/20190610_6.png" alt=""></p>
+<h3 id="黑客帝国代码雨">黑客帝国代码雨</h3>
+<p><code>sudo apt install cmatrix</code>
+<code>cmatrix</code>
+<code>ctrl+z</code> 退出
+<img src="../../images/20190610_7.png" alt=""></p>
+<h3 id="screenfetch">screenfetch</h3>
+<p><code>sudo apt install screenfetch</code>
+<code>screenfetch</code>
+<img src="../../images/20190610_8.png" alt=""></p>
+<h2 id="18顶栏自动隐藏">18、顶栏自动隐藏</h2>
+<p>安装Hide Top Bar插件
+<a href="https://extensions.gnome.org/extension/545/hide-top-bar/">https://extensions.gnome.org/extension/545/hide-top-bar/</a></p>
+<p>在全屏显示窗口时就会自动隐藏深色难看的顶栏了</p>
+<h2 id="19设置字体缩放比例">19、设置字体缩放比例。</h2>
+<p>在字体这里设置缩放比例为1.25，看起来就大很多了，接近我在win 10 的大小习惯
+<img src="../../images/20190610_9.png" alt=""></p>
+<h2 id="20安装mac-os-风格主题">20、安装Mac OS 风格主题</h2>
+<p>参考
+<a href="https://blog.csdn.net/jasonzhoujx/article/details/80400245">https://blog.csdn.net/jasonzhoujx/article/details/80400245</a></p>
+<p><a href="https://www.opendesktop.org/s/Gnome">到这个网站找各种主题</a>
+效果如图
+<img src="../../images/20190610_10.png" alt=""></p>
+<h2 id="21修改登录界面的图片">21、修改登录界面的图片</h2>
+<p>修改这个文件夹
+<code>/etc/alternatives/gdm3.css</code>
+找到这段，修改成自己的图片路径, 以及下面几行css设置.
+<img src="../../images/20190610_11.png" alt=""></p>
+<h2 id="22添加应用启动图标">22、添加应用启动图标</h2>
+<p>安装好pycharm后，没有启动的图标，所以自己设置一个。</p>
+<p>首先找到图标文件，<a href="https://icon-icons.com/zh/%E5%9B%BE%E6%A0%87/pycharm/93936#256">链接</a></p>
+<p>然后在<code>/usr/share/applications/</code> 目录下添加<code>Pycharm.desktop</code>。</p>
+<p>修改这个文件。注意，其中的Exec改成执行的命令，Icon改成自己图标的路径。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[Desktop Entry]
+Type=Application
+Name=Pycharm
+GenericName=Pycharm3
+Comment=Pycharm3:The Python IDE
+Exec=bash /home/jamey/programs/pycharm-2019.1.3/bin/pycharm.sh
+Icon=/home/jamey/programs/pycharm-2019.1.3/pycharm.ico
+Terminal=pycharm
+Categories=Pycharm;
+</code></pre></td></tr></table>
+</div>
+</div><p>出现图标
+<img src="../../images/20190610_12.png" alt=""></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">姬小野</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-06-10
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="../../post/%E4%BD%BF%E7%94%A8face_recognition%E8%BF%9B%E8%A1%8C%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">使用face_recognition进行人脸特征检测</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="../../post/%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8ubuntu18.04-%E4%B8%80/">
+            <span class="next-text nav-default">优雅地使用ubuntu18之一</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'JameyWoo/hello-world'
+        issue-term= "title"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://blog.csdn.net/wjh2622075127" class="iconfont icon-csdn" title="csdn"></a>
+      <a href="https://github.com/JameyWoo" class="iconfont icon-github" title="github"></a>
+  <a href="https://fiveplus.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">姬小野</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

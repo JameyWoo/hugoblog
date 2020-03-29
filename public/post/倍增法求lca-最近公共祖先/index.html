@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>倍增法求Lca-最近公共祖先 - 姬小野的部落</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="姬小野" /><meta name="description" content="一. 明确问题 看标题便知道了, 这篇博客力求解决的问题是求出一棵树的两个结点的最近公共祖先(LCA), 方法是倍增法. 那么什么是Lca呢? 它是一棵" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://fiveplus.top/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="manifest" href="../../manifest.json">
+<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="../../dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="倍增法求Lca-最近公共祖先" />
+<meta property="og:description" content="一. 明确问题 看标题便知道了, 这篇博客力求解决的问题是求出一棵树的两个结点的最近公共祖先(LCA), 方法是倍增法. 那么什么是Lca呢? 它是一棵" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiveplus.top/post/%E5%80%8D%E5%A2%9E%E6%B3%95%E6%B1%82lca-%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" />
+<meta property="article:published_time" content="2018-07-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-07-16T00:00:00+00:00" />
+<meta itemprop="name" content="倍增法求Lca-最近公共祖先">
+<meta itemprop="description" content="一. 明确问题 看标题便知道了, 这篇博客力求解决的问题是求出一棵树的两个结点的最近公共祖先(LCA), 方法是倍增法. 那么什么是Lca呢? 它是一棵">
+<meta itemprop="datePublished" content="2018-07-16T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-16T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2804">
+
+
+
+<meta itemprop="keywords" content="算法," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="倍增法求Lca-最近公共祖先"/>
+<meta name="twitter:description" content="一. 明确问题 看标题便知道了, 这篇博客力求解决的问题是求出一棵树的两个结点的最近公共祖先(LCA), 方法是倍增法. 那么什么是Lca呢? 它是一棵"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="../../" class="logo">姬小野</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="../../">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="../../post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="../../tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="../../about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="../../categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="../../" class="logo">姬小野</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="../../">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">倍增法求Lca-最近公共祖先</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-16 </span>
+        <div class="post-category">
+            <a href="../../categories/%E7%AE%97%E6%B3%95/"> 算法 </a>
+            </div>
+          <span class="more-meta"> 2804 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-明确问题">一. 明确问题</a></li>
+    <li><a href="#二-思路引导">二. 思路引导</a></li>
+    <li><a href="#三-整体框架">三. 整体框架.</a>
+      <ul>
+        <li><a href="#步骤一">步骤一</a></li>
+        <li><a href="#步骤二">步骤二</a></li>
+        <li><a href="#步骤三">步骤三</a></li>
+        <li><a href="#步骤四">步骤四</a></li>
+      </ul>
+    </li>
+    <li><a href="#完整代码">完整代码</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="一-明确问题">一. 明确问题</h2>
+<p>看标题便知道了, 这篇博客力求解决的问题是<strong>求出一棵树的两个结点的最近公共祖先(LCA), 方法是倍增法.</strong></p>
+<p>那么什么是Lca呢?</p>
+<blockquote>
+<p><strong>它是一棵树上两个结点向上移动, 最后交汇的第一个结点, 也就是说这两个结点祖先里离树根最远也是离他们最近的结点.</strong></p>
+</blockquote>
+<p>什么是倍增法呢?</p>
+<blockquote>
+<p><strong>此问题说的是用倍增法求解lca问题, 那么我们可以推测这种方法还可以解决其他的一些问题(不在当下讨论范围). 在学习的过程中, 我是这么理解的: 它是一种类似于二分的方法, 不过这里不是二分, 而是倍增, 以2倍, 4倍, 等等倍数增长</strong></p>
+</blockquote>
+<p>一下没有理解倍增法没关系, 看后面的做法, 再结合前面, 前后贯通大概可以理解的七七八八.</p>
+<h2 id="二-思路引导">二. 思路引导</h2>
+<p><strong>下面的思路试图把过程模块化, 如果你不知道一个地方如何实现, 还请不要纠结</strong>(比如不要纠结于树的深度怎么求, 假设我们求好了树的深度)</p>
+<p>我们找的是任意两个结点的最近公共祖先, 那么我们可以考虑这么两种种情况:</p>
+<ol>
+<li>两结点的深度相同.</li>
+<li>两结点深度不同.</li>
+</ol>
+<p>算法实现来说, <strong>第一种情况是第二种情况的特殊情况, 第二种情况是要转化成第一种情况的</strong></p>
+<p>先不考虑其他, 我们思考这么一个问题: **对于两个深度不同的结点, 把深度更深的那个向其父节点迭代, 直到这个迭代结点和另一个结点深度相同, 那么这两个深度相同的结点的Lca也就是原两个结点的Lca. ** 因此第二种情况转化成第一种情况来求解Lca是可行的.</p>
+<p>现在还不知道如何把两个结点迭代到相同深度, 别急, 这里用到的是上面提到的<strong>倍增法</strong>.</p>
+<p>那么剩下的问题事就解决第一种情况了, 两个结点深度相同了. 怎么求他们的Lca呢?</p>
+<p>这里也是用了倍增法. 思路和上一步的倍增法是一样的, 不同之处有两点</p>
+<ol>
+<li>这次是两个结点一起迭代向前的.</li>
+<li>这次迭代停止的条件和上次不一样.</li>
+</ol>
+<p>OK, 现在无法理解上面的几个过程没关系,<strong>只要知道我们用递增法解决了上述的两个问题.</strong> 具体细节看下面分析.</p>
+<h2 id="三-整体框架">三. 整体框架.</h2>
+<p>那么过了一遍上面的思路引导之后, 我们可以大概想一想怎么实现整个的问题了.</p>
+<p>其实用求Lca这个问题可以分为两块: <strong>预处理 + 查询</strong>, 其中预处理是O(VlogV), 而一次查询是O(logV), V代表结点数量. 所以总<strong>时间复杂度为O(VlogV +ＱlogV)</strong>. Q为查询次数</p>
+<p>其步骤是这样的:</p>
+<ol>
+<li>存储一棵树(邻接表法)</li>
+<li>获取树各结点的上的深度(dfs或bfs)</li>
+<li>获取2次幂祖先的结点, 用parents[maxn][20]数组存储, <strong>倍增法关键</strong></li>
+<li>用倍增法查询Lca</li>
+</ol>
+<h3 id="步骤一">步骤一</h3>
+<p><strong>用邻接表存储一棵树, 并用from[]数组记录各结点的父节点, 其中没有父节点的就是root.</strong></p>
+<p>parents[u][]数组存储的是u结点的祖先结点.
+如parents[u][0], 是u结点的2⁰祖先结点, 即1祖先, 也即父节点. 在输入过程中可以直接得到.
+parents[u][1], 是u结点的2¹祖先结点,即2祖先, 也即父亲的父亲
+parents[u][2], 是u结点的2²祖先结点, 即4祖先, 也即(父亲的父亲)的(父亲的父亲), 也就是爷爷的爷爷.</p>
+<p><strong>理解这个关系很重要, 这也是通过父亲结点获取整个祖先结点的关键.</strong> 现在可以先跳过.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">getData</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">u</span> <span class="o">&gt;&gt;</span> <span class="n">v</span><span class="p">;</span>
+		<span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+		<span class="n">parents</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+		<span class="n">from</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">from</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">root</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="步骤二">步骤二</h3>
+<p><strong>获取各结点的深度, 可以用DFS或这BFS方法</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">void getDepth_dfs(int u) // DFS求深度
+{
+	int len = G[u].size();
+	for (int i = 0; i &lt; len; ++i) {
+		int v = G[u][i];
+		depth[v] = depth[u] + 1;
+		getDepth_dfs(v);
+	}
+}
+
+void getDepth_bfs(int u) // BFS求深度
+{
+	queue&lt;int&gt; Q;
+	Q.push(u);
+	while (!Q.empty()) {
+		int v = Q.front();
+		Q.pop();
+		for (int i = 0; i &lt; G[v].size(); ++i) {
+			depth[G[v][i]] = depth[v] + 1;
+			Q.push(G[v][i]);
+		}
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="步骤三">步骤三</h3>
+<p><strong>求祖先</strong></p>
+<p>在步骤一里面我们讨论了parents数组的意义, 它存的是结点u的2次幂祖先, 从父亲结点开始. 为什么要存2次幂? 这就是<strong>倍增法</strong>的思想了, 我们进行范围缩小不是一步一步的, 那样太暴力了, <strong>所以我们需要某个跨度, 让我们能够先跨越大步, 接近的时候在小步小步跨越, 这样可以大大节省时间.</strong></p>
+<p>**读者可能会疑惑, 先大步, 后小步, 可是我怎么知道什么时候该大步, 什么时候该小步呢? 难道不会不小心跨过头吗? **</p>
+<p>其实不会的, 在代码实现上, **这样的跨越有条件约束, 是非常讲究的. 读者不必为此纠结, ** 不过要讲解也是十分费力不讨好的事情, 所以请读者认证推敲后面Lca函数的代码, 认真琢磨为什么是那样跨越, 其中真味自会品出. <strong>最好是自己写几个例子, 模拟跨越的过程, 在结合现实意义去理解</strong></p>
+<p>那么我们回到当前问题. 请看下面这个公式:</p>
+<blockquote>
+<p><strong>parents[i][j] = parents[parents[i][j-1]][j-1]</strong></p>
+</blockquote>
+<p>这是构造此数组的公式. 不难理解, **父亲的父亲就是爷爷, 爷爷的爷爷就是4倍祖先. ** 请读者结合现实意义去理解.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">void getParents()
+{
+	for (int up = 1; (1 &lt;&lt; up) &lt;= n; ++up) {
+		for (int i = 1; i &lt;= n; ++i) {
+			parents[i][up] = parents[parents[i][up - 1]][up - 1];
+		}
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="步骤四">步骤四</h3>
+<p>做完了前面<strong>O(VlogV)<strong>的预处理操作, 剩下的就是查询了, 一次查询</strong>O(logV)</strong></p>
+<p>因此, 我们可以敏锐的想到: <strong>Lca算法适合查询次数比较多的情况, 不然, 光是预处理就花了那么多时间了</strong>. 所以说, 查询是我们享受成果的时候了.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">int Lca(int u, int v)
+{
+	if (depth[u] &lt; depth[v]) swap(u, v); // 使满足u深度更大, 便于后面操作 
+	int i = -1, j;
+	// i求的是最大二分跨度 
+	while ((1 &lt;&lt; (i + 1)) &lt;= depth[u]) ++i;
+	
+	// 下面这个循环是为了让u和v到同一深度 
+	for (j = i; j &gt;= 0; --j) {
+		if (depth[u] - (1 &lt;&lt; j) &gt;= depth[v]) { // 是&gt;=, 因为如果&lt;,代表跳过头了,跳到了上面. 
+			u = parents[u][j];
+		}
+	}
+	
+	if (u == v) return u; // 刚好是祖宗 
+	
+	// u和v一起二分找祖宗
+	for (j = i; j &gt;= 0; --j) {
+		if (parents[u][j] != parents[v][j]) {
+			u = parents[u][j];
+			v = parents[v][j];
+		}
+	}
+	return parents[u][0]; // 说明上个循环迭代到了Lca的子结点 
+}
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>首先把u调整到深度更大(或相同)的结点, 便于后面操作.</p>
+</li>
+<li>
+<p>然后获取最大跨度i, 所有的跨越都是从i开始的.</p>
+</li>
+<li>
+<p>再然后把u上升到和v一样的深度. 也就是我们前面讨论过的情况二转情况一.</p>
+</li>
+<li>
+<p>最后, 两个结点同时迭代, 直到找到Lca</p>
+</li>
+</ul>
+<p>至此, 我们的问题就解决了.</p>
+<h2 id="完整代码">完整代码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+const int maxn = 10005;
+int parents[maxn][20], depth[maxn];
+int n, from[maxn], root = -1;
+vector&lt;int&gt; G[maxn];
+
+void init()
+{
+	memset(parents, -1, sizeof(parents));
+	memset(from, -1, sizeof(from));
+	memset(depth, -1, sizeof(depth));
+}
+
+void getData()
+{
+	cin &gt;&gt; n;
+	int u, v;
+	for (int i = 1; i &lt; n; ++i) {
+		cin &gt;&gt; u &gt;&gt; v;
+		G[u].push_back(v);
+		parents[v][0] = u;
+		from[v] = 1;
+	}
+	for (int i = 1; i &lt;= n; ++i) {
+		if (from[i] == -1) root = i;
+	}
+}
+
+void getDepth_dfs(int u)
+{
+	int len = G[u].size();
+	for (int i = 0; i &lt; len; ++i) {
+		int v = G[u][i];
+		depth[v] = depth[u] + 1;
+		getDepth_dfs(v);
+	}
+}
+
+void getDepth_bfs(int u)
+{
+	queue&lt;int&gt; Q;
+	Q.push(u);
+	while (!Q.empty()) {
+		int v = Q.front();
+		Q.pop();
+		for (int i = 0; i &lt; G[v].size(); ++i) {
+			depth[G[v][i]] = depth[v] + 1;
+			Q.push(G[v][i]);
+		}
+	}
+}
+
+void getParents()
+{
+	for (int up = 1; (1 &lt;&lt; up) &lt;= n; ++up) {
+		for (int i = 1; i &lt;= n; ++i) {
+			parents[i][up] = parents[parents[i][up - 1]][up - 1];
+		}
+	}
+}
+
+int Lca(int u, int v)
+{
+	if (depth[u] &lt; depth[v]) swap(u, v);
+	int i = -1, j;
+	while ((1 &lt;&lt; (i + 1)) &lt;= depth[u]) ++i;
+	for (j = i; j &gt;= 0; --j) {
+		if (depth[u] - (1 &lt;&lt; j) &gt;= depth[v]) {
+			u = parents[u][j];
+		}
+	}
+	if (u == v) return u;
+	for (j = i; j &gt;= 0; --j) {
+		if (parents[u][j] != parents[v][j]) {
+			u = parents[u][j];
+			v = parents[v][j];
+		}
+	}
+	return parents[u][0];
+}
+
+void questions()
+{
+	int q, u, v;
+	cin &gt;&gt; q;
+	for (int i = 0; i &lt; q; ++i) {
+		cin &gt;&gt; u &gt;&gt; v;
+		int ans = Lca(u, v);
+		cout &lt;&lt; ans &lt;&lt; endl;
+		//cout &lt;&lt; u &lt;&lt; &#34; 和 &#34; &lt;&lt; v &lt;&lt; &#34; 的最近公共祖先(LCA)是: &#34; &lt;&lt; ans &lt;&lt; endl; 
+	}
+}
+
+int main()
+{
+	init();
+	getData();
+	depth[root] = 1;
+	getDepth_dfs(root);
+	//getDepth_bfs(root);
+	getParents();
+	questions();
+}
+/*
+9
+1 2
+1 3
+1 4
+2 5
+2 6
+3 7
+6 8
+7 9
+5
+1 3
+5 6
+8 9
+8 4
+5 8
+*/
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">姬小野</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-16
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="../../tags/%E7%AE%97%E6%B3%95/">算法</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="../../post/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91_%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82%E8%A7%A3%E6%B3%95/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">斐波那契_矩阵快速幂解法</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="../../post/dp_%E6%9C%80%E9%95%BF%E4%B8%8D%E4%B8%8B%E9%99%8D%E5%AD%90%E5%BA%8F%E5%88%97_lis/">
+            <span class="next-text nav-default">DP_最长不下降子序列_LIS</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'JameyWoo/hello-world'
+        issue-term= "title"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://blog.csdn.net/wjh2622075127" class="iconfont icon-csdn" title="csdn"></a>
+      <a href="https://github.com/JameyWoo" class="iconfont icon-github" title="github"></a>
+  <a href="https://fiveplus.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">姬小野</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
