@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Mar 2020 14:07:21 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2020 13:47:39 +0800</lastBuildDate>
     
 	<atom:link href="https://fiveplus.top/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Wsl 安装mysql5.7初始化密码</title>
+      <link>https://fiveplus.top/post/wsl-%E5%AE%89%E8%A3%85mysql5.7%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Mon, 30 Mar 2020 13:47:39 +0800</pubDate>
+      
+      <guid>https://fiveplus.top/post/wsl-%E5%AE%89%E8%A3%85mysql5.7%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AF%86%E7%A0%81/</guid>
+      <description>在 wsl 里 安装 mysql5.7, 设置密码的时候折腾了半天, 看了几十个教程, 都没用, 最后终于看到了一篇, 解决了问题, 特此记录. [最后帮我解决问题的是这篇博客](u</description>
+    </item>
     
     <item>
       <title>实现c语言的memcpy函数</title>

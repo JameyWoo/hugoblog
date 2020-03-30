@@ -6,10 +6,28 @@
     <description>Recent content in Categories on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Mar 2020 14:07:21 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2020 13:47:39 +0800</lastBuildDate>
     
 	<atom:link href="https://fiveplus.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>开发工具</title>
+      <link>https://fiveplus.top/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Mon, 30 Mar 2020 13:47:39 +0800</pubDate>
+      
+      <guid>https://fiveplus.top/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据库</title>
+      <link>https://fiveplus.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Mon, 30 Mar 2020 13:47:39 +0800</pubDate>
+      
+      <guid>https://fiveplus.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>操作系统</title>
@@ -26,15 +44,6 @@
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://fiveplus.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>开发工具</title>
-      <link>https://fiveplus.top/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://fiveplus.top/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     

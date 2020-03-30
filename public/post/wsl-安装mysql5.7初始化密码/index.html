@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Wsl 安装mysql5.7初始化密码 - 姬小野的部落</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="姬小野" /><meta name="description" content="在 wsl 里 安装 mysql5.7, 设置密码的时候折腾了半天, 看了几十个教程, 都没用, 最后终于看到了一篇, 解决了问题, 特此记录. [最后帮我解决问题的是这篇博客](u" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://fiveplus.top/post/wsl-%E5%AE%89%E8%A3%85mysql5.7%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AF%86%E7%A0%81/" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="manifest" href="../../manifest.json">
+<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="../../dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Wsl 安装mysql5.7初始化密码" />
+<meta property="og:description" content="在 wsl 里 安装 mysql5.7, 设置密码的时候折腾了半天, 看了几十个教程, 都没用, 最后终于看到了一篇, 解决了问题, 特此记录. [最后帮我解决问题的是这篇博客](u" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiveplus.top/post/wsl-%E5%AE%89%E8%A3%85mysql5.7%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AF%86%E7%A0%81/" />
+<meta property="article:published_time" content="2020-03-30T13:47:39+08:00" />
+<meta property="article:modified_time" content="2020-03-30T13:47:39+08:00" />
+<meta itemprop="name" content="Wsl 安装mysql5.7初始化密码">
+<meta itemprop="description" content="在 wsl 里 安装 mysql5.7, 设置密码的时候折腾了半天, 看了几十个教程, 都没用, 最后终于看到了一篇, 解决了问题, 特此记录. [最后帮我解决问题的是这篇博客](u">
+<meta itemprop="datePublished" content="2020-03-30T13:47:39&#43;08:00" />
+<meta itemprop="dateModified" content="2020-03-30T13:47:39&#43;08:00" />
+<meta itemprop="wordCount" content="320">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Wsl 安装mysql5.7初始化密码"/>
+<meta name="twitter:description" content="在 wsl 里 安装 mysql5.7, 设置密码的时候折腾了半天, 看了几十个教程, 都没用, 最后终于看到了一篇, 解决了问题, 特此记录. [最后帮我解决问题的是这篇博客](u"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="../../" class="logo">姬小野</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="../../">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="../../post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="../../tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="../../about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="../../categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="../../" class="logo">姬小野</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="../../">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Wsl 安装mysql5.7初始化密码</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-03-30 </span>
+        <div class="post-category">
+            <a href="../../categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+            <a href="../../categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"> 开发工具 </a>
+            </div>
+          <span class="more-meta"> 320 words </span>
+          <span class="more-meta"> 1 min read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#设置无密码">设置无密码</a></li>
+    <li><a href="#修改密码">修改密码</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>在 wsl 里 安装 mysql5.7, 设置密码的时候折腾了半天, 看了几十个教程, 都没用, 最后终于看到了一篇, 解决了问题, 特此记录.</p>
+<p>[最后帮我解决问题的是这篇博客](update mysql.user set authentication_string=password(&lsquo;fiveplus&rsquo;) where user='root&rsquo; and Host ='localhost&rsquo;;). <strong>根据我的情况有所调整.</strong></p>
+<h2 id="设置无密码">设置无密码</h2>
+<p>首先尝试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql -u root -p
+</code></pre></td></tr></table>
+</div>
+</div><p>进入数据库, 无密码, 无法进入</p>
+<p>于是设置无密码进入数据库方式, 执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo vim /etc/mysql/mysql.conf.d/mysqld.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>在 <code>[mysqld]</code> 一栏下方添加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">skip-grant-tables
+</code></pre></td></tr></table>
+</div>
+</div><p>然后执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo service mysql restart
+</code></pre></td></tr></table>
+</div>
+</div><p>重启数据库</p>
+<p>即可无密码进入数据库</p>
+<h2 id="修改密码">修改密码</h2>
+<p>再执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql -u root -p
+</code></pre></td></tr></table>
+</div>
+</div><p>需要输入密码时直接回车</p>
+<p>然后执行</p>
+<p><strong>注意: your_password 字段设置成自己的密码</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">use mysql;
+
+update mysql.user set authentication_string=password(&#39;your_password&#39;) where user=&#39;root&#39; and Host =&#39;localhost&#39;;
+
+update mysql.user set plugin=&#34;mysql_native_password&#34;;
+
+
+flush privileges;
+
+quit;
+</code></pre></td></tr></table>
+</div>
+</div><p>我看的很多其他博客很类似, 但时没有 <code>update mysql.user set plugin=&quot;mysql_native_password&quot;;</code> 这一句. 个人觉得这一句非常关键.</p>
+<p>然后回到</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo vim /etc/mysql/mysql.conf.d/mysqld.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>将之前设置的 <code>skip-grant-tables</code> 取消.</p>
+<p>再</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql -u root -p
+</code></pre></td></tr></table>
+</div>
+</div><p>输入密码, 即可进入数据库.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">姬小野</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-03-30
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="../../post/%E5%AE%9E%E7%8E%B0c%E8%AF%AD%E8%A8%80%E7%9A%84memcpy%E5%87%BD%E6%95%B0/">
+            <span class="next-text nav-default">实现c语言的memcpy函数</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'JameyWoo/hello-world'
+        issue-term= "title"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://blog.csdn.net/wjh2622075127" class="iconfont icon-csdn" title="csdn"></a>
+      <a href="https://github.com/JameyWoo" class="iconfont icon-github" title="github"></a>
+  <a href="https://fiveplus.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">姬小野</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
