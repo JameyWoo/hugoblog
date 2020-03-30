@@ -6,10 +6,19 @@
     <description>Recent content in 开发工具 on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 30 Mar 2020 13:47:39 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2020 19:36:47 +0800</lastBuildDate>
     
 	<atom:link href="https://fiveplus.top/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git设置http及ssh代理 Win10与ubuntu18</title>
+      <link>https://fiveplus.top/post/git%E8%AE%BE%E7%BD%AEssh%E4%BB%A3%E7%90%86-win10%E4%B8%8Eubuntu18.04/</link>
+      <pubDate>Mon, 30 Mar 2020 19:36:47 +0800</pubDate>
+      
+      <guid>https://fiveplus.top/post/git%E8%AE%BE%E7%BD%AEssh%E4%BB%A3%E7%90%86-win10%E4%B8%8Eubuntu18.04/</guid>
+      <description>https 代理 之前在网上一直用的是如下设置. 1 2 3 4 5 6 7 8 9 10 11 // 设置 http 代理 git config --global http.proxy &amp;#34;http://127.0.0.1:8080&amp;#34; git config --global https.proxy &amp;#34;http://127.0.0.1:8080&amp;#34; // 或者 socks5 代理 git config --global http.proxy &amp;#34;socks5://127.0.0.1:1080&amp;#34; git config --global https.proxy &amp;#34;socks5://127.0.0.1:1080&amp;#34; // 取消代理 git config --global --unset</description>
+    </item>
     
     <item>
       <title>Wsl 安装mysql5.7初始化密码</title>
