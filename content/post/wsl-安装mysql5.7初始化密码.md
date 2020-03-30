@@ -11,7 +11,7 @@ categories: ["数据库", "开发工具"]
 
 在 wsl 里 安装 mysql5.7, 设置密码的时候折腾了半天, 看了几十个教程, 都没用, 最后终于看到了一篇, 解决了问题, 特此记录. 
 
-[最后帮我解决问题的是这篇博客](update mysql.user set authentication_string=password('fiveplus') where user='root' and Host ='localhost';). **根据我的情况有所调整.** 
+[最后帮我解决问题的是这篇博客](https://blog.csdn.net/qq_38737992/article/details/81090373). **根据我的情况有所调整.** 
 
 
 
