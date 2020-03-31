@@ -2,14 +2,12 @@
 
 ## Anaconda虚拟环境
 ### 1、创建环境
-
 `conda create --name your_env_name python=3.6`
 或者
 `conda create -n  your_env_name python=3.7`
 新建一个环境
 
 ### 2、查看环境
-
 进入Anaconda Prompt，使用`conda info -e`查看所有环境和当前环境
 
 ### 3、激活环境
