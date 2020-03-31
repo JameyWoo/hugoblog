@@ -48,7 +48,7 @@
 <meta itemprop="description" content="以前使用telnet的时候, 经常是输入字符但是它不显示, 感觉输入无效. 今天看自顶向下, 才知道原来在telnet(基于TCP)客户端上, 用户输">
 <meta itemprop="datePublished" content="2020-03-31T10:10:22&#43;08:00" />
 <meta itemprop="dateModified" content="2020-03-31T10:10:22&#43;08:00" />
-<meta itemprop="wordCount" content="275">
+<meta itemprop="wordCount" content="1104">
 
 
 
@@ -121,9 +121,11 @@
 
       <div class="post-meta">
         <span class="post-time"> 2020-03-31 </span>
-        
-          <span class="more-meta"> 275 words </span>
-          <span class="more-meta"> 1 min read </span>
+        <div class="post-category">
+            <a href="../../categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"> 计算机网络 </a>
+            </div>
+          <span class="more-meta"> 1104 words </span>
+          <span class="more-meta"> 3 mins read </span>
         
       </div>
     </header>
@@ -136,11 +138,93 @@
 </div>
     <div class="post-content">
       <ol>
-<li>以前使用telnet的时候, 经常是输入字符但是它不显示, 感觉输入无效. 今天看自顶向下, 才知道原来在telnet(基于TCP)客户端上, 用户输入了一个字符, 将会被传输到服务端, 然后服务端返回这个字符它才会回显. 而不是像ssh那样都会显示. 在linux下开一个<code>nc -l 6666</code>就可以测试.</li>
-<li><em>RTT</em>(Round-Trip Time)，往返时延: 报文发出到收到确认之间的时间.</li>
-<li>超时重传会一直重传吗?</li>
-<li>定时器的作用?</li>
-<li>流量控制: 如果主机B的接收缓存满了, 接收窗口为0, 那么主机A将会继续发送一个字节数据的报文段. 因为如果不发送, 那么如果B的程序清空缓存, 它不会发送ack, A不会直到有接收空间了.</li>
+<li>
+<p>以前使用telnet的时候, 经常是输入字符但是它不显示, 感觉输入无效. 今天看自顶向下, 才知道原来在telnet(基于TCP)客户端上, 用户输入了一个字符, 将会被传输到服务端, 然后服务端返回这个字符它才会回显. 而不是像ssh那样都会显示. 在linux下开一个<code>nc -l 6666</code>就可以测试.</p>
+</li>
+<li>
+<p><em>RTT</em>(Round-Trip Time)，往返时延: 报文发出到收到确认之间的时间.</p>
+</li>
+<li>
+<p>超时重传会一直重传吗?</p>
+<p>不会</p>
+</li>
+<li>
+<p>定时器的作用?</p>
+<p>有很多种定时器</p>
+<ol>
+<li>连接建立定时器: 建立连接时如果长时间没有响应, 将会以指数增长的时间重传尝试重连.</li>
+<li>超时重传的定时器</li>
+<li>延迟确认定时器: 延迟ACK的发送</li>
+<li>坚持定时器(persist timer): 接收窗口为0时, 会定时地发送0字节探测包</li>
+<li>keepaliver timer: 当tcp两端长时间不发送数据时, 如何判断连接是否失效呢? 使用该定时器</li>
+<li>FIN_WAIT_2定时器: 防止对方一直不发送FIN包</li>
+<li>TIME_WAIT定时器</li>
+</ol>
+</li>
+<li>
+<p>防止SYN洪泛攻击(SYV flood attack): SYN cookie.</p>
+</li>
+<li>
+<p>流量控制: 如果主机B的接收缓存满了, 接收窗口为0, 那么主机A将会继续发送一个字节数据的报文段. 因为如果不发送, 那么如果B的程序清空缓存, 它不会发送ack, A不会直到有接收空间了.</p>
+</li>
+<li>
+<p>nagle算法与延时确认的冲突: nagle算法只允许同时存在一个已发送但未确认的小包(小于MSS), 之后的小包会试图合并. 而延迟确认指的是当接收方接收到数据想要发送ACK的时候, 会延迟一段时间(比如40ms), 如果这段时间内有数据需要发送, 那么会一起发送. nagle和延时确认在这种特殊情况下, 会导致网络的延迟过高.</p>
+<p>nagle算法是时代的产物, 它是为了避免网络上有过多的小包而降低吞吐量. 现在很多程序都没有开启nagle算法, 因为现在的设施已经比以前好多了, 而无法接收过高的延迟.</p>
+<p>nagle算法的描述如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">    if there is new data to send #有数据要发送
+        # 发送窗口缓冲区和队列数据 &gt;=mss，队列数据（available data）为原有的队列数据加上新到来的数据
+        # 也就是说缓冲区数据超过mss大小，nagle算法尽可能发送足够大的数据包
+        if the window size &gt;= MSS and available data is &gt;= MSS 
+            send complete MSS segment now # 立即发送
+        else
+            if there is unconfirmed data still in the pipe # 前一次发送的包没有收到ack
+                # 将该包数据放入队列中，直到收到一个ack再发送缓冲区数据
+                enqueue data in the buffer until an acknowledge is received 
+            else
+                send data immediately # 立即发送
+            end if
+        end if
+    end if　
+</code></pre></td></tr></table>
+</div>
+</div><p>即</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Nagle算法的实现规则：
+如果包长度达到MSS，则允许发送；
+如果该包含有FIN，则允许发送；
+设置了TCP_NODELAY选项，则允许发送；
+未设置TCP_CORK选项时，若所有发出去的小数据包（包长度小于MSS）均被确认，则允许发送；
+上述条件都未满足，但发生了超时（一般为200ms），则立即发送。
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 
     </div>
