@@ -48,11 +48,11 @@
 <meta itemprop="description" content="以前使用telnet的时候, 经常是输入字符但是它不显示, 感觉输入无效. 今天看自顶向下, 才知道原来在telnet(基于TCP)客户端上, 用户输">
 <meta itemprop="datePublished" content="2020-04-01T10:10:22&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-01T10:10:22&#43;08:00" />
-<meta itemprop="wordCount" content="1724">
+<meta itemprop="wordCount" content="2205">
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="tcp," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tcp笔记"/>
 <meta name="twitter:description" content="以前使用telnet的时候, 经常是输入字符但是它不显示, 感觉输入无效. 今天看自顶向下, 才知道原来在telnet(基于TCP)客户端上, 用户输"/>
 
@@ -124,8 +124,8 @@
         <div class="post-category">
             <a href="../../categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"> 计算机网络 </a>
             </div>
-          <span class="more-meta"> 1724 words </span>
-          <span class="more-meta"> 4 mins read </span>
+          <span class="more-meta"> 2205 words </span>
+          <span class="more-meta"> 5 mins read </span>
         
       </div>
     </header>
@@ -146,6 +146,9 @@
 </li>
 <li>
 <p>超时重传会一直重传吗?</p>
+<p>不会. 一定的次数尝试之后就会停止.</p>
+<p>快重传: 指的是如果接收到了1 + 3次同一个ACK, 那么会触发快重传.</p>
+<p>这里的快重传是相对超时重传的, 普通的超时重传为通过指数增长的超时时间计时来决定是否重传.</p>
 </li>
 <li>
 <p>定时器的作用?</p>
@@ -246,7 +249,45 @@
 <li>安全隐私防护：实际的机器可以隐藏自己真实的 IP 地址 当然也有明显的弊端：NAT 会对包进行修改，有些协议无法通过 NAT。</li>
 </ul>
 </li>
-<li></li>
+<li>
+<p>为什么要有3次握手呢? 2次或4次可以嘛?</p>
+</li>
+<li>
+<p>为什么要有4次挥手呢? 3次可以嘛?</p>
+</li>
+<li>
+<p>接收窗口是什么? 代表字节的大小嘛? 接收窗口的字节数包括tcp首部嘛?</p>
+<p>代表字节数.</p>
+</li>
+<li>
+<p>重传的机制是什么? 超时重传, 快重传, 冗余ACK</p>
+</li>
+<li>
+<p>停等协议是什么</p>
+<p>停等协议的接收、发送双方仅需设置一个帧的缓冲存储空间和帧序号只取0或1的两个状态标志位，便可有效地实现数据重发并确保接收方接受的数据不会重复。</p>
+<p>信道利用率低</p>
+</li>
+<li>
+<p>tcp首部各部分含义</p>
+<p><img src="assets/image-20200409234210565.png" alt="image-20200409234210565"></p>
+<p><img src="assets/image-20200409234222738.png" alt="image-20200409234222738"></p>
+<p><img src="assets/image-20200409234247223.png" alt="image-20200409234247223"></p>
+</li>
+<li>
+<p>为什么ACK(第三次握手)不消耗序列号? 为什么SYN消耗序列号?</p>
+<p>FIN之所以消耗序列号, 是因为他需要ACK. 如果不消耗序列号, 那么ACK的确认值不变, 就意味着和上一个数据包的值一样, 会混淆</p>
+<p>需要确认的包就需要消耗序列号, 不需要确认的就不需要</p>
+<blockquote>
+<p>SYNs and FINs require acknowledgement, thus they increment the stream&rsquo;s sequence number by one when used.</p>
+<p>For example, if the connection is closed without sending any more data, then if the
+FIN did <em>not</em> consume a sequence
+number the closing end couldn&rsquo;t tell the difference between an ACK for the FIN,
+and an ACK for the data that was sent prior to the FIN.</p>
+</blockquote>
+</li>
+<li>
+<p>阻塞IO和非阻塞IO</p>
+</li>
 </ol>
 
     </div>
@@ -267,9 +308,15 @@
   
 </div>
 <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="../../tags/tcp/">tcp</a>
+          </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="../../post/vscode%E9%85%8D%E7%BD%AEc&#43;&#43;%E5%8D%95%E6%96%87%E4%BB%B6%E5%92%8Cmakefile%E7%BC%96%E8%AF%91debug/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Vscode配置C&#43;&#43;单文件和makefile编译debug</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="../../post/git%E8%AE%BE%E7%BD%AEssh%E4%BB%A3%E7%90%86-win10%E4%B8%8Eubuntu18.04/">
             <span class="next-text nav-default">Git设置http及ssh代理 Win10与ubuntu18</span>
             <span class="next-text nav-mobile">Next</span>

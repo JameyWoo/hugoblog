@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>链表 on 姬小野的部落</title>
+    <link>https://fiveplus.top/tags/%E9%93%BE%E8%A1%A8/</link>
+    <description>Recent content in 链表 on 姬小野的部落</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 02 Apr 2020 10:41:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://fiveplus.top/tags/%E9%93%BE%E8%A1%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Leetcode链表专题</title>
+      <link>https://fiveplus.top/post/leetcode%E9%93%BE%E8%A1%A8%E4%B8%93%E9%A2%98/</link>
+      <pubDate>Thu, 02 Apr 2020 10:41:45 +0800</pubDate>
+      
+      <guid>https://fiveplus.top/post/leetcode%E9%93%BE%E8%A1%A8%E4%B8%93%E9%A2%98/</guid>
+      <description>合并两个有序链表 leetcode链接 今天重做这道题, 发现之前的代码写的太糟糕了(虽然这次也一般). 刚好这一段可以用在排序链表那里. 空间复杂度</description>
+    </item>
+    
+  </channel>
+</rss>

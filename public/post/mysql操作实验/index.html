@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mysql操作实验 - 姬小野的部落</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="姬小野" /><meta name="description" content="实验1.1 数据库定义语言实验 （1）实验目的 理解和掌握数据库DDL语言，能够熟练地使用SQL DDL语句创建、修改和删除数据库、模式和基本表。 （" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://fiveplus.top/post/mysql%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C/" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="manifest" href="../../manifest.json">
+<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="../../dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Mysql操作实验" />
+<meta property="og:description" content="实验1.1 数据库定义语言实验 （1）实验目的 理解和掌握数据库DDL语言，能够熟练地使用SQL DDL语句创建、修改和删除数据库、模式和基本表。 （" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiveplus.top/post/mysql%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C/" />
+<meta property="article:published_time" content="2020-04-04T22:26:40+08:00" />
+<meta property="article:modified_time" content="2020-04-04T22:26:40+08:00" />
+<meta itemprop="name" content="Mysql操作实验">
+<meta itemprop="description" content="实验1.1 数据库定义语言实验 （1）实验目的 理解和掌握数据库DDL语言，能够熟练地使用SQL DDL语句创建、修改和删除数据库、模式和基本表。 （">
+<meta itemprop="datePublished" content="2020-04-04T22:26:40&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-04T22:26:40&#43;08:00" />
+<meta itemprop="wordCount" content="6548">
+
+
+
+<meta itemprop="keywords" content="mysql," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mysql操作实验"/>
+<meta name="twitter:description" content="实验1.1 数据库定义语言实验 （1）实验目的 理解和掌握数据库DDL语言，能够熟练地使用SQL DDL语句创建、修改和删除数据库、模式和基本表。 （"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="../../" class="logo">姬小野</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="../../">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="../../post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="../../tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="../../categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="../../" class="logo">姬小野</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="../../">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mysql操作实验</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-04 </span>
+        <div class="post-category">
+            <a href="../../categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+            </div>
+          <span class="more-meta"> 6548 words </span>
+          <span class="more-meta"> 14 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#实验11-数据库定义语言实验">实验1.1 数据库定义语言实验</a>
+      <ul>
+        <li></li>
+        <li><a href="#一系列的操作">一系列的操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#实验12-数据基本查询实验">实验1.2 数据基本查询实验</a>
+      <ul>
+        <li><a href="#创建两个表">创建两个表</a></li>
+        <li><a href="#查看表信息">查看表信息</a></li>
+      </ul>
+    </li>
+    <li><a href="#实验13-数据高级查询实验">实验1.3 数据高级查询实验</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#实验14-数据更新实验">实验1.4 数据更新实验</a>
+      <ul>
+        <li><a href="#插入">插入</a></li>
+        <li><a href="#更新">更新</a></li>
+        <li><a href="#删除">删除</a></li>
+      </ul>
+    </li>
+    <li><a href="#实验15-视图">实验1.5 视图</a>
+      <ul>
+        <li><a href="#创建视图">创建视图</a></li>
+        <li><a href="#更新视图">更新视图</a></li>
+        <li><a href="#是否可更新">是否可更新</a></li>
+        <li><a href="#with-check-option">WITH CHECK OPTION</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="实验11-数据库定义语言实验">实验1.1 数据库定义语言实验</h2>
+<blockquote>
+<p>（1）实验目的</p>
+<p>理解和掌握数据库DDL语言，能够熟练地使用SQL DDL语句创建、修改和删除数据库、模式和基本表。</p>
+<p>（2）实验内容和要求</p>
+<p>理解和掌握SQL DDL语句的语法，特别是各种参数的具体含义和使用方法；使用SQL语句创建、修改和删除数据库、模式和基本表。掌握SQL语句常见语法错误的调试方法。</p>
+<p>（3）实验重点和难点</p>
+<p>实验重点：创建数据库、基本表。 实验难点：创建基本表时，为不同的列选择合适的数据类型，正确创建表级和列级完整性约束，如列值是否允许为空、主码和外码等。注意：数据完整性约束，可以在创建基本表时定义，也可以先创建表然后定义完整性约束。由于完整性约束的限制，被引用的表要先创建。</p>
+</blockquote>
+<h4 id="创建一个-sales-数据库">创建一个 sales 数据库</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">database</span> <span class="n">sales</span> <span class="nb">character</span> <span class="k">set</span> <span class="n">utf8</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="创建一个region表">创建一个region表</h4>
+<p>以 id 为主码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">use</span> <span class="n">sales</span><span class="p">;</span>
+
+<span class="k">create</span> <span class="k">table</span> <span class="n">region</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="k">alias</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="从csv文件导入数据">从csv文件导入数据</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">load</span> <span class="k">data</span> <span class="n">infile</span> <span class="s1">&#39;/mnt/e/课程笔记/数据库/实验课安排2020/dbtestdata_csv/region.csv&#39;</span>
+<span class="k">into</span> <span class="k">table</span> <span class="n">region</span> <span class="nb">character</span> <span class="k">set</span> <span class="n">utf8</span>
+<span class="n">fields</span> <span class="n">terminated</span> <span class="k">by</span> <span class="s1">&#39;,&#39;</span> <span class="n">optionally</span> <span class="n">enclosed</span> <span class="k">by</span> <span class="s1">&#39;&#34;&#39;</span> <span class="n">escaped</span> <span class="k">by</span> <span class="s1">&#39;&#34;&#39;</span>
+<span class="n">lines</span> <span class="n">terminated</span> <span class="k">by</span> <span class="s1">&#39;\r\n&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>但提示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+</code></pre></td></tr></table>
+</div>
+</div><p>查阅资料后, 是用下面的方法解决</p>
+<p>找到mysql配置文件 <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code> , 在<code>[mysqld]</code>下, 设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">secure_file_priv = &#39;&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>即可成功导入数据</p>
+<p>导入数据之后, 执行select查看数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select * from region;
++------+---------------------------------+-----------------+
+| id   | name                            | alias           |
++------+---------------------------------+-----------------+
+|    1 | 亚洲                            | 新兴的大陆      |
+|    2 | 非洲                            | 战乱的大陆      |
+|    3 | 北美洲                          | 美国的地盘      |
+|    4 | 南美洲                          | 美国的后院      |
+|    5 | 欧洲                            | 美国的帮手      |
+|    6 | 大洋洲                          | 小国的地盘      |
++------+---------------------------------+-----------------+
+6 rows in set (0.00 sec)
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="删除数据库">删除数据库</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">drop database test;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="删除一个表">删除一个表</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">drop table test;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="清空表数据">清空表数据</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">delete from table_name;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="一系列的操作">一系列的操作</h3>
+<p>注释解释了这个操作的含义</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># 使用数据库 sales
+</span><span class="c1"></span><span class="k">use</span> <span class="n">sales</span><span class="p">;</span>
+
+<span class="c1"># 设置主键
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">region</span> <span class="k">add</span> <span class="k">primary</span> <span class="k">key</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+<span class="c1"># 取消主键
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">region</span> <span class="k">drop</span> <span class="k">primary</span> <span class="k">key</span><span class="p">;</span>
+
+<span class="c1"># 创建一个有主键的table
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="nf">table2</span> <span class="p">(</span>
+    <span class="n">table2_id</span> <span class="kt">int</span> <span class="k">not</span> <span class="no">null</span><span class="p">,</span>
+    <span class="k">primary</span> <span class="k">key</span> <span class="p">(</span><span class="n">table2_id</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1"># 删除表
+</span><span class="c1"></span><span class="k">drop</span> <span class="k">table</span> <span class="n">table2</span><span class="p">;</span>
+
+<span class="c1"># 建表时添加外键. 注意这里table2的这个列需要是主键
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="nf">table1</span><span class="p">(</span>
+    <span class="n">table1_id</span> <span class="kt">int</span> <span class="k">not</span> <span class="no">null</span><span class="p">,</span>
+    <span class="n">table2_id</span> <span class="kt">int</span> <span class="k">not</span> <span class="no">null</span><span class="p">,</span>
+    <span class="k">CONSTRAINT</span> <span class="o">`</span><span class="n">FK1</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span><span class="p">(</span><span class="n">table2_id</span><span class="p">)</span> <span class="k">references</span> <span class="nf">table2</span><span class="p">(</span><span class="n">table2_id</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1"># 删除外键约束. 注意要对应外键约束的名字
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">sales</span><span class="p">.</span><span class="n">table1</span> <span class="k">drop</span> <span class="k">foreign</span> <span class="k">key</span> <span class="n">table1_ibfk_1</span><span class="p">;</span>
+
+<span class="c1"># 单独设置外键约束（注意这里是外键约束而不是外键，外键是一列，而外键约束是一个约束）
+</span><span class="c1"># 不使用 constraint `FK_hello` 做别名会分配一个名字
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">table1</span> <span class="k">add</span> <span class="k">constraint</span> <span class="o">`</span><span class="n">FK_hello</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="nf">FK_name</span><span class="p">(</span><span class="n">table2_id</span><span class="p">)</span> <span class="k">references</span> <span class="nf">table2</span><span class="p">(</span><span class="n">table2_id</span><span class="p">);</span>
+
+<span class="c1"># 设置唯一键
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="nf">tableName</span><span class="p">(</span>
+    <span class="n">columnName</span> <span class="kt">int</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span><span class="p">(</span><span class="n">columnName</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1"># 单独添加唯一键
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">tableName</span> <span class="k">add</span> <span class="k">unique</span> <span class="k">key</span><span class="p">(</span><span class="n">columnName</span><span class="p">)</span>
+
+<span class="c1"># 删除唯一键
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">tableName</span> <span class="k">drop</span> <span class="k">index</span> <span class="n">columnName</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="实验12-数据基本查询实验">实验1.2 数据基本查询实验</h2>
+<blockquote>
+<p>（1）实验目的</p>
+<p>掌握SQL程序设计基本规范，熟练运用SQL语言实现数据基本查询，包括单表查询、分组统计查询和连接查询。</p>
+<p>（2）实验内容和要求</p>
+<p>针对某个数据库设计各种单表查询SQL语句、分组统计查询语句；设计单个表针对自身的连接查询，设计多个表的连接查询。理解和掌握SQL查询语句各个子句的特点和作用，按照SQL程序设计规范写出具体的SQL查询语句，并调试通过。</p>
+<p>说明：简单地说，SQL程序设计规范包含SQL关键字大写、表名、属性名、存储过程名等标识符大小写混合、SQL程序书写缩进排列等编程规范。</p>
+<p>（3）实验重点和难点</p>
+<p>实验重点：分组统计查询、单表自身连接查询、多表连接查询。 实验难点：区分元组过滤条件和分组过滤条件；确定连接属性，正确设计连接条件。</p>
+</blockquote>
+<h3 id="创建两个表">创建两个表</h3>
+<p>首先创建两个表，分别为region，nation</p>
+<h4 id="创建-region">创建 region</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># 创建表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="nf">region</span><span class="p">(</span>
+    <span class="n">id</span> <span class="kt">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+    <span class="n">name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">alias</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="p">)</span> <span class="kp">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>从csv文件中导入数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># 从csv文件中导入数据
+</span><span class="c1"></span><span class="k">load</span> <span class="n">data</span> <span class="k">infile</span> <span class="s1">&#39;/mnt/e/课程笔记/数据库/实验课安排2020/dbtestdata_csv/region.csv&#39;</span>
+<span class="k">into</span> <span class="k">table</span> <span class="n">sales</span><span class="p">.</span><span class="n">region</span> <span class="k">character</span> <span class="kt">set</span> <span class="n">utf8</span>
+<span class="n">fields</span> <span class="k">terminated</span> <span class="k">by</span> <span class="s1">&#39;,&#39;</span> <span class="k">optionally</span> <span class="k">enclosed</span> <span class="k">by</span> <span class="s1">&#39;&#34;&#39;</span> <span class="k">escaped</span> <span class="k">by</span> <span class="s1">&#39;&#34;&#39;</span>
+<span class="k">lines</span> <span class="k">terminated</span> <span class="k">by</span> <span class="s1">&#39;\r\n&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="创建-nation">创建 nation</h4>
+<p>并设置 nation 的键 region_id 作为 region.id 的外键</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># 建立 nation 国家表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="nf">nation</span><span class="p">(</span>
+    <span class="n">id</span> <span class="kt">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+    <span class="n">cn_name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">region_id</span> <span class="kt">int</span><span class="p">,</span>
+    <span class="n">en_name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="k">CONSTRAINT</span> <span class="o">`</span><span class="n">fk_region_id</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span><span class="p">(</span><span class="n">region_id</span><span class="p">)</span> <span class="k">references</span> <span class="nf">region</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">)</span> <span class="kp">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>导入数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># 导入数据
+</span><span class="c1"></span><span class="k">load</span> <span class="n">data</span> <span class="k">infile</span> <span class="s1">&#39;/mnt/e/课程笔记/数据库/实验课安排2020/dbtestdata_csv/nation.csv&#39;</span>
+<span class="k">into</span> <span class="k">table</span> <span class="n">nation</span> <span class="k">character</span> <span class="kt">set</span> <span class="n">utf8</span>
+<span class="n">fields</span> <span class="k">terminated</span> <span class="k">by</span> <span class="s1">&#39;,&#39;</span> <span class="k">optionally</span> <span class="k">enclosed</span> <span class="k">by</span> <span class="s1">&#39;&#34;&#39;</span> <span class="k">escaped</span> <span class="k">by</span> <span class="s1">&#39;&#34;&#39;</span>
+<span class="k">lines</span> <span class="k">terminated</span> <span class="k">by</span> <span class="s1">&#39;\r\n&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查看表信息">查看表信息</h3>
+<p>下表是 <code>region</code> 的信息（代表6个大洲）。 其中id为大洲的id， name为大洲的中文名字， alias为大洲的别名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">region</span><span class="p">;</span>
+<span class="o">+-------+--------------+------+-----+---------+-------+</span>
+<span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>         <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span> <span class="n">Extra</span> <span class="o">|</span>
+<span class="o">+-------+--------------+------+-----+---------+-------+</span>
+<span class="o">|</span> <span class="n">id</span>    <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>      <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>  <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="n">alias</span> <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">+-------+--------------+------+-----+---------+-------+</span>
+<span class="mi">3</span> <span class="n">rows</span> <span class="k">in</span> <span class="kt">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>查看所有列</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select * from region;
++----+---------------------------------+-----------------+
+| id | name                            | alias           |
++----+---------------------------------+-----------------+
+|  1 | 亚洲                            | 新兴的大陆      |
+|  2 | 非洲                            | 战乱的大陆      |
+|  3 | 北美洲                          | 美国的地盘      |
+|  4 | 南美洲                          | 美国的后院      |
+|  5 | 欧洲                            | 美国的帮手      |
+|  6 | 大洋洲                          | 小国的地盘      |
++----+---------------------------------+-----------------+
+6 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>下表是 nation 的信息。</p>
+<p>id 代表国家的id，cn_name代表国家的中文名, region_id代表所在的大洲的id（外键约束）, en_name代表国家的英文名.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">nation</span><span class="p">;</span>
+<span class="o">+-----------+--------------+------+-----+---------+-------+</span>
+<span class="o">|</span> <span class="n">Field</span>     <span class="o">|</span> <span class="n">Type</span>         <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span> <span class="n">Extra</span> <span class="o">|</span>
+<span class="o">+-----------+--------------+------+-----+---------+-------+</span>
+<span class="o">|</span> <span class="n">id</span>        <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>      <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="n">cn_name</span>   <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="n">region_id</span> <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>      <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span> <span class="n">MUL</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="n">en_name</span>   <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">+-----------+--------------+------+-----+---------+-------+</span>
+<span class="mi">4</span> <span class="n">rows</span> <span class="k">in</span> <span class="kt">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>展示部分列</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select * from nation;
++-----+----------------------+-----------+------------------------------+
+| id  | cn_name              | region_id | en_name                      |
++-----+----------------------+-----------+------------------------------+
+|   1 | 阿富汗                |         1 | Afghanistan                  |
+|   2 | 阿尔巴尼亚           |         1 | Albania                      |
+|   3 | 安道尔               |         1 | Andorra                      |
+|   4 | 安哥拉               |         2 | Angola                       |
+|   8 | 阿根廷               |         4 | Argentina                    |
+|  11 | 澳大利亚             |         6 | Australia                    |
+|  12 | 奥地利               |         5 | Austria                      |
+|  13 | 阿塞拜疆             |         1 | Azerbaijan                   |
+|  14 | 阿联酋               |         1 | United Arab Emirates         |
+|  15 | 巴哈马               |         3 | Bahamas                      |
+|  16 | 巴林                 |         1 | Bahrain                      |
+|  17 | 孟加拉               |         1 | Bangladesh                   |
+|  21 | 比利时               |         5 | Belgium                      |
+|  22 | 贝宁                 |         2 | Benin                        |
+|  23 | 百慕大               |         3 | Bermuda                      |
+|  24 | 不丹                 |         1 | Bhutan                       |
+|  25 | 玻利维亚             |         4 | Bolivia                      |
+|  27 | 博茨瓦纳             |         2 | Botswana                     |
+|  29 | 巴西                 |         4 | Brazil                       |
+|  30 | 文莱                 |         1 | Brunei Darussalam            |
+|  31 | 保加利亚             |         5 | Bulgaria                     |
+|  33 | 布隆迪               |         2 | Burundi                      |
+|  35 | 喀麦隆               |         2 | Cameroon                     |
+|  36 | 加拿大               |         3 | Canada                       |
+|  37 | 佛得角               |         2 | Cape Verde Republic of       |
+|  38 | 中非共和国           |         2 | The Central African Republic |
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="查询所有数据">查询所有数据</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">select * from region;
+</code></pre></td></tr></table>
+</div>
+</div><p>查询<code>id &lt; 3</code>的数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">region</span>
+<span class="k">where</span> <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>得到</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select * from region
+    -&gt; where id &lt; 3;
++----+-------------------------------+-----------------+
+| id | name                          | alias           |
++----+-------------------------------+-----------------+
+|  1 | 亚洲                          | 新兴的大陆      |
+|  2 | 非洲                          | 战乱的大陆      |
++----+-------------------------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="查询在北美洲的所有国家">查询在北美洲的所有国家</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> <span class="n">id</span><span class="p">,</span> <span class="n">cn_name</span> <span class="k">from</span> <span class="n">nation</span>
+<span class="k">where</span> <span class="n">region_id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select id, cn_name from nation
+    -&gt; where region_id = 3;
++-----+-------------------------------------+
+| id  | cn_name                             |
++-----+-------------------------------------+
+|  15 | 巴哈马                              |
+|  23 | 百慕大                              |
+|  36 | 加拿大                              |
+|  47 | 哥斯达黎加                          |
+|  49 | 古巴                                |
+|  79 | 格林纳达                            |
+|  82 | 危地马拉                            |
+|  87 | 海地                                |
+|  88 | 洪都拉斯                            |
+| 100 | 牙买加                              |
+| 135 | 墨西哥                              |
+| 151 | 尼加拉瓜                            |
+| 161 | 巴拿马                              |
+| 212 | 美国                                |
+| 217 | 委内瑞拉                            |
++-----+-------------------------------------+
+15 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="查询所有每个洲的国家的数量">查询所有每个洲的国家的数量</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">select region_id as id, count(*) cnt from nation
+group by region_id;
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select region_id as id, count(*) cnt from nation
+    -&gt; group by region_id;
++------+-----+
+| id   | cnt |
++------+-----+
+|    1 |  46 |
+|    2 |  37 |
+|    3 |  15 |
+|    4 |  10 |
+|    5 |  35 |
+|    6 |   7 |
++------+-----+
+6 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="实验13-数据高级查询实验">实验1.3 数据高级查询实验</h2>
+<blockquote>
+<p>（1）实验目的</p>
+<p>掌握SQL嵌套查询和集合查询等各种高级查询的设计方法等。</p>
+<p>（2）实验内容和要求</p>
+<p>针对自定义数据库，正确分析用户查询要求，设计各种嵌套查询和集合查询。</p>
+<p>（3）实验重点和难点</p>
+<p>实验重点：嵌套查询。</p>
+<p>实验难点：相关子查询、多层EXIST嵌套查询。</p>
+</blockquote>
+<h4 id="查询每个大洲各有多少个国家">查询每个大洲各有多少个国家</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> 
+	<span class="n">region</span><span class="p">.</span><span class="n">id</span> <span class="k">as</span> <span class="n">region_id</span><span class="p">,</span> <span class="n">region</span><span class="p">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">region_name</span><span class="p">,</span> <span class="n">region_count</span><span class="p">.</span><span class="n">cnt</span> <span class="k">as</span> <span class="n">count</span>
+<span class="k">from</span> <span class="n">region</span><span class="p">,</span> <span class="p">(</span>
+	<span class="k">select</span> <span class="n">region_id</span> <span class="k">as</span> <span class="n">id</span><span class="p">,</span> <span class="nf">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">cnt</span> <span class="k">from</span> <span class="n">nation</span>
+	<span class="k">group</span> <span class="k">by</span> <span class="n">region_id</span>
+<span class="p">)</span> <span class="n">region_count</span>
+<span class="k">where</span> 
+	<span class="n">region</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">region_count</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>方法是用一个包含group的select对nation操作建立一个临时表(统计每个region_id出现的次数), 然后和region组合查询.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select 
+    -&gt; region.id as region_id, region.name as region_name, region_count.cnt as count
+    -&gt; from region, (
+    -&gt; select region_id as id, count(*) cnt from nation
+    -&gt; group by region_id
+    -&gt; ) region_count
+    -&gt; where
+    -&gt; region.id = region_count.id;
++-----------+---------------------------------+-------+
+| region_id | region_name                     | count |
++-----------+---------------------------------+-------+
+|         1 | 亚洲                            |    46 |
+|         2 | 非洲                            |    37 |
+|         3 | 北美洲                          |    15 |
+|         4 | 南美洲                          |    10 |
+|         5 | 欧洲                            |    35 |
+|         6 | 大洋洲                          |     7 |
++-----------+---------------------------------+-------+
+6 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="查询以a或b开头的行-并且按照字典序递增">查询以A或B开头的行, 并且按照字典序递增</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> <span class="n">cn_name</span><span class="p">,</span> <span class="n">en_name</span> <span class="k">from</span> <span class="n">nation</span>
+<span class="k">where</span> <span class="n">cn_name</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span>
+	<span class="k">select</span> <span class="n">cn_name</span> <span class="k">from</span> <span class="n">nation</span> 
+    <span class="k">where</span> <span class="n">en_name</span> <span class="k">not</span> <span class="k">like</span> <span class="s1">&#39;A%&#39;</span> <span class="k">and</span> <span class="n">en_name</span> <span class="k">not</span> <span class="k">like</span> <span class="s1">&#39;B%&#39;</span>
+<span class="p">)</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">en_name</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select cn_name, en_name from nation
+    -&gt; where cn_name not in (
+    -&gt; select cn_name from nation
+    -&gt;     where en_name not like &#39;A%&#39; and en_name not like &#39;B%&#39;
+    -&gt; )
+    -&gt; order by en_name;
++-------------------------------------+-------------------+
+| cn_name                             | en_name           |
++-------------------------------------+-------------------+
+| 阿富汗                              | Afghanistan       |
+| 阿尔巴尼亚                          | Albania           |
+| 阿尔及利亚                          | Algeria           |
+| 美国                                | America           |
+| 安道尔                              | Andorra           |
+| 安哥拉                              | Angola            |
+| 阿根廷                              | Argentina         |
+| 澳大利亚                            | Australia         |
+| 奥地利                              | Austria           |
+| 阿塞拜疆                            | Azerbaijan        |
+| 巴哈马                              | Bahamas           |
+| 巴林                                | Bahrain           |
+| 孟加拉                              | Bangladesh        |
+| 比利时                              | Belgium           |
+| 贝宁                                | Benin             |
+| 百慕大                              | Bermuda           |
+| 不丹                                | Bhutan            |
+| 玻利维亚                            | Bolivia           |
+| 博茨瓦纳                            | Botswana          |
+| 巴西                                | Brazil            |
+| 文莱                                | Brunei Darussalam |
+| 保加利亚                            | Bulgaria          |
+| 布隆迪                              | Burundi           |
++-------------------------------------+-------------------+
+23 rows in set (0.00 sec)
+
+mysql&gt; 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="实验14-数据更新实验">实验1.4 数据更新实验</h2>
+<blockquote>
+<p>（1）实验目的</p>
+<p>熟悉数据库的数据更新操作，能够使用SQL语句对数据库进行数据的插入、修改、删除操作。</p>
+<p>（2）实验内容和要求</p>
+<p>针对自定义数据库设计单元组插入、批量数据插入、修改数据和删除数据等SQL语句。理解和掌握INSERT、UPDATE和DELETE语法结构的各个组成成分，结合嵌套SQL子查询，分别设计几种不同形式的插入、修改和删除数据的语句，并调试成功。</p>
+<p>（3）实验重点和难点</p>
+<p>实验重点：插入、修改和删除数据的SQL。</p>
+<p>实验难点：与嵌套SQL子查询相结合的插入、修改和删除数据的SQL语句；利用一个表的数据来插入、修改和删除另外一个表的数据。</p>
+</blockquote>
+<p>创建新表来进行这部分测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">create</span> <span class="k">table</span> <span class="nf">student</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="kt">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+    <span class="n">name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">age</span> <span class="kt">int</span>
+<span class="p">);</span>
+
+<span class="k">create</span> <span class="k">table</span> <span class="nf">student2</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="kt">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+    <span class="n">age</span> <span class="kt">int</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="插入">插入</h3>
+<h4 id="插入一行或多行">插入一行或多行</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">insert</span> <span class="k">into</span> <span class="nf">student</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+<span class="k">values</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;小明&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;小红&#34;</span><span class="p">,</span> <span class="mi">81</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&#34;老王&#34;</span><span class="p">,</span> <span class="mi">36</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以指定对应的列名(或者不指定, 按默认). 可以多行插入</p>
+<p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; insert into student (id, name, age)
+    -&gt; values
+    -&gt; (1, &#34;小明&#34;, 18),
+    -&gt; (2, &#34;小红&#34;, 81),
+    -&gt; (3, &#34;老王&#34;, 36);
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql&gt; select * from student;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |   18 |
+|  2 | 小红   |   81 |
+|  3 | 老王   |   36 |
++----+--------+------+
+3 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="从select语句中插入">从select语句中插入</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">insert into student2 
+(id, age)
+select id, age from student
+where age &lt; 60;
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">student2</span> 
+    <span class="o">-&gt;</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="k">select</span> <span class="n">id</span><span class="p">,</span> <span class="n">age</span> <span class="k">from</span> <span class="n">student</span>
+    <span class="o">-&gt;</span> <span class="k">where</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">2</span> <span class="n">rows</span> <span class="nf">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+<span class="n">Records</span><span class="p">:</span> <span class="mi">2</span>  <span class="n">Duplicates</span><span class="p">:</span> <span class="mi">0</span>  <span class="n">Warnings</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">student2</span><span class="p">;</span>
+<span class="o">+----+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+----+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span>   <span class="mi">36</span> <span class="o">|</span>
+<span class="o">+----+------+</span>
+<span class="mi">2</span> <span class="n">rows</span> <span class="k">in</span> <span class="kt">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="更新">更新</h3>
+<p>将id = 1的学生年龄增加40岁</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">update student set age=age+40
+where id=1;
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">update</span> <span class="n">student</span> <span class="kt">set</span> <span class="n">age</span><span class="o">=</span><span class="n">age</span><span class="o">+</span><span class="mi">40</span>
+    <span class="o">-&gt;</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="n">row</span> <span class="nf">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+<span class="n">Rows</span> <span class="n">matched</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Changed</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Warnings</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">student</span><span class="p">;</span>
+<span class="o">+----+--------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>   <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+----+--------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="err">小明</span>   <span class="o">|</span>   <span class="mi">58</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="err">小红</span>   <span class="o">|</span>   <span class="mi">81</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="err">老王</span>   <span class="o">|</span>   <span class="mi">36</span> <span class="o">|</span>
+<span class="o">+----+--------+------+</span>
+<span class="mi">3</span> <span class="n">rows</span> <span class="k">in</span> <span class="kt">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>将小明小红中的小都修改为大, 将老改为old.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">update student set 
+name=replace(name, &#34;小&#34;, &#34;大&#34;),
+name=replace(name, &#34;老&#34;, &#34;old&#34;);
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">student</span><span class="p">;</span>
+<span class="o">+----+--------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>   <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+----+--------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="err">大明</span>   <span class="o">|</span>   <span class="mi">58</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="err">大红</span>   <span class="o">|</span>   <span class="mi">81</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">old王</span>  <span class="o">|</span>   <span class="mi">36</span> <span class="o">|</span>
+<span class="o">+----+--------+------+</span>
+<span class="mi">3</span> <span class="n">rows</span> <span class="k">in</span> <span class="kt">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="删除">删除</h3>
+<h4 id="删除表中全部的数据">删除表中全部的数据</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">delete from student;
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; delete from student;
+Query OK, 3 rows affected (0.02 sec)
+
+mysql&gt; select * from student;
+Empty set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="删除部分数据">删除部分数据</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">delete from student
+where name not like &#34;小%&#34;;
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; insert into student (id, name, age) values (1, &#34;小明&#34;, 18), (2, &#34;小红&#34;, 81), (3, &#34;老王&#34;, 36);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql&gt; select * from student;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |   18 |
+|  2 | 小红   |   81 |
+|  3 | 老王   |   36 |
++----+--------+------+
+3 rows in set (0.00 sec)
+
+mysql&gt; delete from student where name not like &#34;小%&#34;;
+Query OK, 1 row affected (0.02 sec)
+
+mysql&gt; select * from student;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |   18 |
+|  2 | 小红   |   81 |
++----+--------+------+
+2 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="实验15-视图">实验1.5 视图</h2>
+<blockquote>
+<p>（1）实验目的</p>
+<p>熟悉SQL语言有关视图的操作，能够熟练使用SQL语句来创建需要的视图，定义数据库外模式，并能使用所创建的视图实现数据管理。</p>
+<p>（2）实验内容和要求</p>
+<p>针对给定的数据库模式，以及相应的应用需求，创建视图和带WITH CHECK OPTION的视图，并验证视图WITH CHECK OPTION选项的有效性。理解和掌握视图消解执行原理，掌握可更新视图和不可更新视图的区别。</p>
+<p>（3）实验重点和难点</p>
+<p>实验重点：创建视图。</p>
+<p>实验难点：可更新的视图和不可更新的视图的区别， WITH CHECK OPTION的验证。</p>
+</blockquote>
+<h3 id="创建视图">创建视图</h3>
+<p>创建视图, 并查看所有的表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">create view stview as select * from student;
+</code></pre></td></tr></table>
+</div>
+</div><p>结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; create view stview as select * from student;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql&gt; show tables;
++-----------------+
+| Tables_in_sales |
++-----------------+
+| nation          |
+| region          |
+| student         |
+| student2        |
+| stview          |
+| tableName       |
+| tableName1      |
+| tableName2      |
++-----------------+
+8 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到视图&quot;stview&quot;在tables中显示</p>
+<p>使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">drop</span> <span class="k">view</span> <span class="n">stview</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>撤销视图</p>
+<h3 id="更新视图">更新视图</h3>
+<p>将视图中的数据更新, 再查看原表中的数据, 发现同时也更新了.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; update stview set age=20 where id=1;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql&gt; select * from stview;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |   20 |
+|  2 | 小红   |   81 |
++----+--------+------+
+2 rows in set (0.00 sec)
+
+mysql&gt; select * from student;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |   20 |
+|  2 | 小红   |   81 |
++----+--------+------+
+2 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>将原表更新, 视图也随之更新</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select * from student;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |  120 |
+|  2 | 小红   |  181 |
++----+--------+------+
+2 rows in set (0.00 sec)
+
+mysql&gt; select * from stview;
++----+--------+
+| id | name   |
++----+--------+
+|  1 | 小明   |
+|  2 | 小红   |
++----+--------+
+2 rows in set (0.00 sec)
+
+mysql&gt; update student set name=replace(name, &#39;小&#39;, &#39;老&#39;);
+Query OK, 2 rows affected (0.02 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql&gt; select * from stview;
++----+--------+
+| id | name   |
++----+--------+
+|  1 | 老明   |
+|  2 | 老红   |
++----+--------+
+2 rows in set (0.00 sec)
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="是否可更新">是否可更新</h3>
+<p>简单视图是可更新的。可以在UPDATE、DELETE或INSERT等语句中使用它们，以更新基表的内容。对于可更新的视图，在视图中的行和基表中的行之间必须具有一对一的关系。</p>
+<p>如果视图包含下述结构中的任何一种，那么它就是不可更新的：</p>
+<ol>
+<li>聚合函数（SUM(), MIN(), MAX(), COUNT()等）。</li>
+<li>DISTINCT</li>
+<li>GROUP BY</li>
+<li>HAVING</li>
+<li>UNION或UNION ALL</li>
+<li>位于选择列表中的子查询</li>
+<li>Join</li>
+<li>FROM子句中的不可更新视图</li>
+<li>WHERE子句中的子查询，引用FROM子句中的表。</li>
+<li>仅引用文字值（在该情况下，没有要更新的基本表）。</li>
+<li>ALGORITHM = TEMPTABLE（使用临时表总会使视图成为不可更新的）。</li>
+</ol>
+<h3 id="with-check-option">WITH CHECK OPTION</h3>
+<p>WITH CHECK OPTION 是为了保证视图的一致性</p>
+<blockquote>
+<p>可以为可更新视图指定 WITH CHECK OPTION 子句，以防止插入 select_statement 中 WHERE 子句不为真的行。它还会阻止更新 WHERE 子句为true的行，但更新会导致它不为true（换句话说，它会阻止可见行更新为不可见的行）</p>
+</blockquote>
+<p>比如创建如下表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">create</span> <span class="k">table</span> <span class="nf">test</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="kt">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+    <span class="n">name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">age</span> <span class="kt">int</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>插入以下数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">insert</span> <span class="k">into</span> <span class="nf">test</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+<span class="k">values</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;小明&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;小红&#34;</span><span class="p">,</span> <span class="mi">81</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&#34;老王&#34;</span><span class="p">,</span> <span class="mi">36</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&#34;老张&#34;</span><span class="p">,</span> <span class="mi">66</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&#34;老李&#34;</span><span class="p">,</span> <span class="mi">54</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&#34;小孙&#34;</span><span class="p">,</span> <span class="mi">333</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="建立没有with-check-option-的视图">建立没有WITH CHECK OPTION 的视图</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">create view view_test1
+as 
+select * from test
+where name like &#34;小%&#34;;
+</code></pre></td></tr></table>
+</div>
+</div><p>查看这个视图</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select * from view_test1;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |   18 |
+|  2 | 小红   |   81 |
+|  6 | 小孙   |  333 |
++----+--------+------+
+3 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>然后向其中插入name为&quot;老李&quot;的行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">insert into view_test1 values
+(7, &#34;老李&#34;, 666);
+</code></pre></td></tr></table>
+</div>
+</div><p>看到插入成功, 视图中没有(因为不满足where条件), 原表中有</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; insert into view_test1 values
+    -&gt; (7, &#34;老李&#34;, 666);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&gt; select * from view_test1;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |   18 |
+|  2 | 小红   |   81 |
+|  6 | 小孙   |  333 |
++----+--------+------+
+3 rows in set (0.01 sec)
+
+mysql&gt; select * from test;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | 小明   |   18 |
+|  2 | 小红   |   81 |
+|  3 | 老王   |   36 |
+|  4 | 老张   |   66 |
+|  5 | 老李   |   54 |
+|  6 | 小孙   |  333 |
+|  7 | 老李   |  666 |
++----+--------+------+
+7 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="建立有-with-check-option--的视图">建立有 WITH CHECK OPTION  的视图</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">create</span> <span class="n">view</span> <span class="n">view_test2</span>
+<span class="k">as</span> 
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">test</span>
+<span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s2">&#34;小%&#34;</span>
+<span class="k">WITH</span> <span class="k">CHECK</span> <span class="k">OPTION</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后向其中插入name为“老李”的行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">insert into view_test2 values
+(8, &#34;老李&#34;, 666);
+</code></pre></td></tr></table>
+</div>
+</div><p>结果插入失败</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; insert into view_test2 values
+    -&gt; (8, &#34;老李&#34;, 666);
+ERROR 1369 (HY000): CHECK OPTION failed &#39;sales.view_test2&#39;
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>试图将视图中的&quot;小明&quot;改成&quot;李明&rdquo;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">update view_test2 set name=replace(name, &#34;小明&#34;, &#34;李明&#34;);
+</code></pre></td></tr></table>
+</div>
+</div><p>得到错误</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; update view_test2 set name=replace(name, &#34;小明&#34;, &#34;李明&#34;);
+ERROR 1369 (HY000): CHECK OPTION failed &#39;sales.view_test2&#39;
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>改成&quot;小李明&rdquo;, 成功</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; update view_test2 set name=replace(name, &#34;小明&#34;, &#34;小李明&#34;);
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 3  Changed: 1  Warnings: 0
+
+mysql&gt;
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">姬小野</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-04-04
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="../../tags/mysql/">mysql</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="../../post/vscode%E4%B8%ADleetcode%E7%9A%84debug%E7%8E%AF%E5%A2%83snippet%E8%AE%BE%E7%BD%AE/">
+            <span class="next-text nav-default">Vscode中leetcode的debug环境snippet设置</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'JameyWoo/hello-world'
+        issue-term= "title"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://blog.csdn.net/wjh2622075127" class="iconfont icon-csdn" title="csdn"></a>
+      <a href="https://github.com/JameyWoo" class="iconfont icon-github" title="github"></a>
+  <a href="https://fiveplus.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">姬小野</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

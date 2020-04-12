@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Vscode配置C&#43;&#43;单文件和makefile编译debug - 姬小野的部落</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="姬小野" /><meta name="description" content="vscode配置C&#43;&#43;非常麻烦, 我之前配置了好几次都失败了, 更别说配置debug. 今天又尝试了以下, 惊奇的配置成功了. 就几个简单的步骤, 以前" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://fiveplus.top/post/vscode%E9%85%8D%E7%BD%AEc&#43;&#43;%E5%8D%95%E6%96%87%E4%BB%B6%E5%92%8Cmakefile%E7%BC%96%E8%AF%91debug/" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="manifest" href="../../manifest.json">
+<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="../../dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Vscode配置C&#43;&#43;单文件和makefile编译debug" />
+<meta property="og:description" content="vscode配置C&#43;&#43;非常麻烦, 我之前配置了好几次都失败了, 更别说配置debug. 今天又尝试了以下, 惊奇的配置成功了. 就几个简单的步骤, 以前" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiveplus.top/post/vscode%E9%85%8D%E7%BD%AEc&#43;&#43;%E5%8D%95%E6%96%87%E4%BB%B6%E5%92%8Cmakefile%E7%BC%96%E8%AF%91debug/" />
+<meta property="article:published_time" content="2020-04-02T08:38:01+08:00" />
+<meta property="article:modified_time" content="2020-04-02T08:38:01+08:00" />
+<meta itemprop="name" content="Vscode配置C&#43;&#43;单文件和makefile编译debug">
+<meta itemprop="description" content="vscode配置C&#43;&#43;非常麻烦, 我之前配置了好几次都失败了, 更别说配置debug. 今天又尝试了以下, 惊奇的配置成功了. 就几个简单的步骤, 以前">
+<meta itemprop="datePublished" content="2020-04-02T08:38:01&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-02T08:38:01&#43;08:00" />
+<meta itemprop="wordCount" content="1683">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vscode配置C&#43;&#43;单文件和makefile编译debug"/>
+<meta name="twitter:description" content="vscode配置C&#43;&#43;非常麻烦, 我之前配置了好几次都失败了, 更别说配置debug. 今天又尝试了以下, 惊奇的配置成功了. 就几个简单的步骤, 以前"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="../../" class="logo">姬小野</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="../../">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="../../post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="../../tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="../../categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="../../" class="logo">姬小野</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="../../">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="../../categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Vscode配置C&#43;&#43;单文件和makefile编译debug</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-02 </span>
+        <div class="post-category">
+            <a href="../../categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"> 开发工具 </a>
+            </div>
+          <span class="more-meta"> 1683 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#单文件调试">单文件调试</a></li>
+    <li><a href="#make调试">make调试</a></li>
+    <li><a href="#例子">例子</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>vscode配置C++非常麻烦, 我之前配置了好几次都失败了, 更别说配置debug.</p>
+<p>今天又尝试了以下, 惊奇的配置成功了. 就几个简单的步骤, 以前怎么就配置不成功呢&hellip;</p>
+<p>值得一提的是, 以前总是会出现没有找到标准库path然后在include那里画波浪线的情况, 这次居然都好了, 估计是版本更新让它更好用了吧.</p>
+<p>分为两种情况, 一种是调试单个文件的. 另一种是调试用make生成的多文件调试. 下面分别介绍.</p>
+<h2 id="单文件调试">单文件调试</h2>
+<p>首先创建一个文件夹, 再创建一个test.cpp文件</p>
+<p>写入以下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">args</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;b = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;args: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">args</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">args</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">argv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> 
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后点到调试, 点击<code>create a launch.json file</code></p>
+<p><img src="../../assets/image-20200401211306628.png" alt="image-20200401211306628"></p>
+<p>选择 g++, 他就会自动生成一个launch.json. 然后就可以直接设置断点调试啦!</p>
+<p>奇怪我以前也这样试过但没有成功过&hellip;</p>
+<p>这样还无法输入数据(cin), 我的解决方法是将launch.json中的这个字段设置为true</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;externalConsole&#34;: true,
+</code></pre></td></tr></table>
+</div>
+</div><p>这样它会弹出一个窗口, 我们就可以输入数据了.</p>
+<p>类似的, 有时候我们执行的命令行程序需要有命令行参数, 怎么办呢?</p>
+<p>还是修改launch.json中的字段</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;args&#34;: [&#34;arg1&#34;, &#34;arg2&#34;, &#34;arg3&#34;],
+</code></pre></td></tr></table>
+</div>
+</div><p>下面是我生成的launch.json文件和tasks.json文件.</p>
+<p>launch.json文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">//</span> <span class="err">使用</span> <span class="err">IntelliSense</span> <span class="err">了解相关属性。</span> 
+    <span class="err">//</span> <span class="err">悬停以查看现有属性的描述。</span>
+    <span class="err">//</span> <span class="err">欲了解更多信息，请访问:</span> <span class="err">https://go.microsoft.com/fwlink/?linkid=830387</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;0.2.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;configurations&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;cppdbg&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;request&#34;</span><span class="p">:</span> <span class="s2">&#34;launch&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;program&#34;</span><span class="p">:</span> <span class="s2">&#34;${fileDirname}\\${fileBasenameNoExtension}.exe&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;arg1&#34;</span><span class="p">,</span> <span class="s2">&#34;arg2&#34;</span><span class="p">,</span> <span class="s2">&#34;arg3&#34;</span><span class="p">],</span>
+            <span class="nt">&#34;stopAtEntry&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&#34;cwd&#34;</span><span class="p">:</span> <span class="s2">&#34;${workspaceFolder}&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;environment&#34;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&#34;externalConsole&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&#34;MIMode&#34;</span><span class="p">:</span> <span class="s2">&#34;gdb&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;miDebuggerPath&#34;</span><span class="p">:</span> <span class="s2">&#34;C:\\mingw64\\bin\\gdb.exe&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;setupCommands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;为 gdb 启用整齐打印&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;text&#34;</span><span class="p">:</span> <span class="s2">&#34;-enable-pretty-printing&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;ignoreFailures&#34;</span><span class="p">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;preLaunchTask&#34;</span><span class="p">:</span> <span class="s2">&#34;test&#34;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>值得注意的是, 这里的<code>name</code>字段指的是这个配置的名字, 而最下面的<code>preLaunchTask</code>字段才是和tasks里的<code>label</code>配置一一对应的. 这个非常重要.</p>
+<p>同样的, 在一个launch.json里, 可以添加多个配置, 在debug界面会以下拉菜单选择使用. 这样就可以在一个文件夹里为每个单个的cpp文件添加调试配置啦.</p>
+<p>tasks.json文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;tasks&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;shell&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;C:\\mingw64\\bin\\g++.exe&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;-g&#34;</span><span class="p">,</span>
+                <span class="s2">&#34;${file}&#34;</span><span class="p">,</span>
+                <span class="s2">&#34;-o&#34;</span><span class="p">,</span>
+                <span class="s2">&#34;${fileDirname}\\${fileBasenameNoExtension}.exe&#34;</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;options&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;cwd&#34;</span><span class="p">:</span> <span class="s2">&#34;C:\\mingw64\\bin&#34;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0.0&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个command命令非常重要, 它是生成exe文件的关键, 也是可以修改的. 我们后面介绍的makefile编译调试就是主要要修改这个command.</p>
+<p>值得注意的是, 下面这个<code>cwd</code>字段坑了我一段时间.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;options&#34;: {
+	&#34;cwd&#34;: &#34;C:\\mingw64\\bin&#34;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>我执行makefile的debug的时候, 有这个字段, 于是make它总说找不到文件, 我添加绝对路径之后就好了. 我删掉它就好了(当然这里不要删).</p>
+<p>我猜cwd是<code>change work directory</code>的缩写, 执行make的时候, 到这个工作目录下, 当然找不到文件了.</p>
+<h2 id="make调试">make调试</h2>
+<p>支持make调试的不同就是<code>tasks.json</code>的不同, 它控制了exe文件的生成.</p>
+<p>因此我们需要将command修改</p>
+<p>新的tasks.json如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;tasks&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;shell&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;echo&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;make&#34;</span><span class="p">,</span>
+            <span class="err">//</span> <span class="nt">&#34;options&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="err">//</span>     <span class="nt">&#34;cwd&#34;</span><span class="p">:</span> <span class="s2">&#34;C:\\mingw64\\bin&#34;</span>
+            <span class="err">//</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0.0&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意注释掉的那几行, 取消注释就错了. 这里我给出是为了提醒. 因为如果修改一个空模板, 不会有它, 而修改g++模板, 会有它. 这个需要注意.</p>
+<p>当然, 想要调试, make中必须开启<code>-g</code>选项.</p>
+<h2 id="例子">例子</h2>
+<p>下面提供一个make调试的例子.</p>
+<p>下面是目录树.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">├── Makefile
+├── add.cpp
+├── sub.cpp
+├── test.h
+└── .vscode
+   ├── launch.json
+   └── tasks.json
+</code></pre></td></tr></table>
+</div>
+</div><p>Makefile</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">add.exe</span><span class="o">:</span> 
+	g++ add.cpp sub.cpp -g -o add.exe
+</code></pre></td></tr></table>
+</div>
+</div><p>add.cpp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="cp">#include</span> <span class="cpf">&#34;test.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34; 2 + 3 = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34; 2 - 3 = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">sub</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>sub.cpp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&#34;test.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>test.h</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#ifndef _TEST_H
+</span><span class="cp">#define _TEST_H
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
+<span class="cp">#endif
+</span></code></pre></td></tr></table>
+</div>
+</div><p>launch.json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">//</span> <span class="err">使用</span> <span class="err">IntelliSense</span> <span class="err">了解相关属性。</span> 
+    <span class="err">//</span> <span class="err">悬停以查看现有属性的描述。</span>
+    <span class="err">//</span> <span class="err">欲了解更多信息，请访问:</span> <span class="err">https://go.microsoft.com/fwlink/?linkid=830387</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;0.2.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;configurations&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;debug-c++&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;cppdbg&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;request&#34;</span><span class="p">:</span> <span class="s2">&#34;launch&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;program&#34;</span><span class="p">:</span> <span class="s2">&#34;${fileDirname}\\${fileBasenameNoExtension}.exe&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&#34;stopAtEntry&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&#34;cwd&#34;</span><span class="p">:</span> <span class="s2">&#34;${workspaceFolder}&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;environment&#34;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&#34;externalConsole&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&#34;MIMode&#34;</span><span class="p">:</span> <span class="s2">&#34;gdb&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;miDebuggerPath&#34;</span><span class="p">:</span> <span class="s2">&#34;C:\\mingw64\\bin\\gdb.exe&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;setupCommands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;为 gdb 启用整齐打印&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;text&#34;</span><span class="p">:</span> <span class="s2">&#34;-enable-pretty-printing&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;ignoreFailures&#34;</span><span class="p">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;preLaunchTask&#34;</span><span class="p">:</span> <span class="s2">&#34;echo&#34;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>tasks.json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">//</span> <span class="err">See</span> <span class="err">https://go.microsoft.com/fwlink/?LinkId=733558</span>
+    <span class="err">//</span> <span class="err">for</span> <span class="err">the</span> <span class="err">documentation</span> <span class="err">about</span> <span class="err">the</span> <span class="err">tasks.json</span> <span class="err">format</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;tasks&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;echo&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;shell&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;make&#34;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">姬小野</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-04-02
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="../../post/leetcode%E9%93%BE%E8%A1%A8%E4%B8%93%E9%A2%98/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Leetcode链表专题</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="../../post/tcp%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">Tcp笔记</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'JameyWoo/hello-world'
+        issue-term= "title"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://blog.csdn.net/wjh2622075127" class="iconfont icon-csdn" title="csdn"></a>
+      <a href="https://github.com/JameyWoo" class="iconfont icon-github" title="github"></a>
+  <a href="https://fiveplus.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">姬小野</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

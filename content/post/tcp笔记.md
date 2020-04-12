@@ -3,6 +3,7 @@ title: "Tcp笔记"
 date: 2020-04-01T10:10:22+08:00
 draft: false
 categories: ["计算机网络"]
+tags: ["tcp"]
 ---
 
 
@@ -13,7 +14,11 @@ categories: ["计算机网络"]
 
 3. 超时重传会一直重传吗? 
 
-    
+     不会. 一定的次数尝试之后就会停止. 
+
+    快重传: 指的是如果接收到了1 + 3次同一个ACK, 那么会触发快重传.
+
+    这里的快重传是相对超时重传的, 普通的超时重传为通过指数增长的超时时间计时来决定是否重传. 
 
 4. 定时器的作用? 
 
@@ -33,7 +38,7 @@ categories: ["计算机网络"]
 
 7. nagle算法与延时确认的冲突: nagle算法只允许同时存在一个已发送但未确认的小包(小于MSS), 之后的小包会试图合并. 而延迟确认指的是当接收方接收到数据想要发送ACK的时候, 会延迟一段时间(比如40ms), 如果这段时间内有数据需要发送, 那么会一起发送. nagle和延时确认在这种特殊情况下, 会导致网络的延迟过高.
 
-    nagle算法是时代的产物, 它是为了避免网络上有过多的小包而降低吞吐量. 现在很多程序都没有开启nagle算法, 因为现在的设施已经比以前好多了, 而无法接收过高的延迟.
+    nagle算法是时代的产物, 它是为了避免网络上有过多的小包而降低吞吐量. 现在很多程序都没有开启nagle算法, 因为现在的设施已经比以前好多了, 而无法接收过高的延迟. 
 
     nagle算法的描述如下
 
@@ -91,4 +96,42 @@ categories: ["计算机网络"]
    - 出口 IP 共享：通过一个公网地址可以让许多机器连上网络，解决 IP 地址不够用的问题
    - 安全隐私防护：实际的机器可以隐藏自己真实的 IP 地址 当然也有明显的弊端：NAT 会对包进行修改，有些协议无法通过 NAT。
    
-10. 
+10. 为什么要有3次握手呢? 2次或4次可以嘛?
+
+11. 为什么要有4次挥手呢? 3次可以嘛?
+
+12. 接收窗口是什么? 代表字节的大小嘛? 接收窗口的字节数包括tcp首部嘛?
+
+     代表字节数. 
+
+13. 重传的机制是什么? 超时重传, 快重传, 冗余ACK
+
+14. 停等协议是什么
+
+     停等协议的接收、发送双方仅需设置一个帧的缓冲存储空间和帧序号只取0或1的两个状态标志位，便可有效地实现数据重发并确保接收方接受的数据不会重复。
+
+     信道利用率低
+
+15. tcp首部各部分含义
+
+     ![image-20200409234210565](assets/image-20200409234210565.png)
+
+     ![image-20200409234222738](assets/image-20200409234222738.png)
+
+     ![image-20200409234247223](assets/image-20200409234247223.png)
+
+16. 为什么ACK(第三次握手)不消耗序列号? 为什么SYN消耗序列号?
+
+     FIN之所以消耗序列号, 是因为他需要ACK. 如果不消耗序列号, 那么ACK的确认值不变, 就意味着和上一个数据包的值一样, 会混淆
+
+     需要确认的包就需要消耗序列号, 不需要确认的就不需要
+
+     > SYNs and FINs require acknowledgement, thus they increment the stream's sequence number by one when used. 
+     >
+     > For example, if the connection is closed without sending any more data, then if the
+     > FIN did *not* consume a sequence
+     > number the closing end couldn't tell the difference between an ACK for the FIN,
+     > and an ACK for the data that was sent prior to the FIN.
+
+17. 阻塞IO和非阻塞IO
+
