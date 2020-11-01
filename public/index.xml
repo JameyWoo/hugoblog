@@ -6,10 +6,19 @@
     <description>Recent content on 姬小野的部落</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Apr 2020 22:26:40 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2020 10:54:13 +0800</lastBuildDate>
     
 	<atom:link href="https://fiveplus.top/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mubutest</title>
+      <link>https://fiveplus.top/post/mubutest/</link>
+      <pubDate>Sun, 01 Nov 2020 10:54:13 +0800</pubDate>
+      
+      <guid>https://fiveplus.top/post/mubutest/</guid>
+      <description>LevelDB概述持久化键值存储特性1. key和value都是任意长度的字节数组；2. entry（即一条K-V记录）默认是按照key的字典顺</description>
+    </item>
     
     <item>
       <title>Mysql操作实验</title>
