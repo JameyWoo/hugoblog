@@ -2,21 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://fiveplus.top/post/mubutest/</loc>
-    <lastmod>2020-11-01T10:54:13+08:00</lastmod>
+    <loc>https://fiveplus.top/post/gfs/</loc>
+    <lastmod>2020-11-01T22:13:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://fiveplus.top/post/</loc>
-    <lastmod>2020-11-01T10:54:13+08:00</lastmod>
+    <lastmod>2020-11-01T22:13:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://fiveplus.top/</loc>
+    <lastmod>2020-11-01T22:13:43+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fiveplus.top/post/mubutest/</loc>
     <lastmod>2020-11-01T10:54:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
